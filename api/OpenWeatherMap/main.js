@@ -13,7 +13,7 @@ $(document).ready(function() {
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
         let API_KEY = 'bf715dcd93e17e20902eaf9197616477';
-        let baseURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${API_KEY}`;
+        let baseURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${API_KEY}`;
 
         $.get(baseURL, function(res) {
             let data = res.current;
