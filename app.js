@@ -37,7 +37,7 @@ recognition.onstart = function() {
         glow();
         recognition.stop();
         console.log('Speech recognition has stopped.');
-    }, 3000);
+    }, 5000);
 
 };
 
