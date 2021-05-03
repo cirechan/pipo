@@ -171,7 +171,7 @@ function playSpotify() { //Función para reproductor de Spotify
         const player = new Spotify.Player({
             name: 'PIPO',
             volume: 0.4,
-            getOAuthToken: cb => { cb("BQD3mRIMuBjbZUxE2Y1GDSMyEMWTLi58DZOon6ukfLm0pWGY3Iq1xEKbTAZDJpMuP2gULsgIXwpOc-VoXJtjmCOPgAGN5-L25CKIr8xBidWaDaHLt5XgN9vJPtTLIAVtR88wEV6Wt_snu7-GZEuOETyqu-syrNuSbJaq"); }
+            getOAuthToken: cb => { cb("BQB68U1JhSy2dKIPLDqzclHi9nS-CK1FB3-En-CNqlQKYQ-HPA-PO-aOcuLV91O-q-5gbzKCdmytEAzjGdvcBGzFX0RgTBNS8gEn5knLPixAERBgF7pLKKlg9NXxdkYBi3NX9InQM1OoDbDB8GfPusZYBAsfaK3ZTkeN"); }
         });
 
 
