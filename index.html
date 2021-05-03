@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1360, initial-scale=1, maximum-scale=1">
+    <title>PIPO</title>
+    <link rel="icon" type="image/png" href="./svg/pipo logo.svg">
+
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="loading">
+        <h3>Cargando toda la información para tí ...</h3>
+    </div>
+
+    <main>
+        <section class="glass">
+
+            <div class="dashboard">
+                <div class="user">
+
+                    <div class="logo">
+                        <img src="./img/pipo logo color.png" alt="logo">
+                    </div>
+
+
+
+                </div>
+
+                <div class="links">
+
+                    <div class="link">
+                        <img id="g" src="./svg/google.svg" alt="">
+                        <div id="google" class="buscar">
+                            <input type="text" name="" id="busq-google" placeholder="BUSCAR EN GOOGLE">
+                        </div>
+                    </div>
+                    <div class="link ">
+                        <img id="yt" src="./svg/youtube.svg" alt="">
+                        <div id="youtube" class="buscar">
+                            <input type="text" name="" id="busq-yt" placeholder="BUSCAR EN YOUTUBE">
+                        </div>
+                    </div>
+                    <div class="link">
+                        <img id="spotifyb" src="./svg/spotify.svg" alt="">
+                        <div id="spoti" class="buscar">
+                            <input type="text" name="" id="busq-spotify" placeholder="BUSCAR EN SPOTIFY">
+                        </div>
+                    </div>
+                    <div class="link">
+                        <div class="weather-icon"><img src="./icons/unknown.png" /></div>
+                        <div id="tiempo" class="tiempo buscar">
+                            <h5 id="temp-main">0°</h5>
+                            <h2 id="condition">unknown</h2>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="pro talk ">
+                    <div id="glow"></div>
+                    <img class="talk " src="./img/mic.png " alt="micro">
+                    <h2>Pulsa para hablar</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="games ">
+
+                <div class="hora">
+                    <h4 id="hora">00:00</h4>
+                </div>
+
+                <div class="fecha">
+                    <h4 id="day">1</h4>
+                    <h4 id="fecha">1</h4>
+                </div>
+
+                <div class="status">
+                    <h1 id="status">
+                        <input type="text" name="" id="comando" placeholder="Hola! Qué quieres hacer">
+                    </h1>
+                    <div class="tooltip">?
+
+                        <span class="tooltiptext">
+                            <Ul>
+                                <li>Comandos de voz</li>
+                                <li>Busca en Google...</li>
+                                <li>Busca en YouTube...</li>
+                                <li>Busca en Spotify...</li>
+                                <li>Qué es...</li>
+                                <li>Pon en YouTube...</li>
+                                <li>Activa / Desactiva Spotify</li>
+                                <li>Qué tal? / Cómo estas?</li>
+                                <li>Qué día es? / A qué día estamos?</li>
+                                <li>Qué día es hoy?</li>
+                                <li>Qué tiempo hace?</li>
+                                <li>Quien eres?</li>
+                                <li>Qué hora es?</li>
+                                <li>Adiós</li>
+
+                            </Ul>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="respuesta card">
+                    <h3 class="content"></h3>
+                    </h3>
+                </div>
+                <div class="imagenes"></div>
+
+
+
+                <div id="spotify">
+                    <div id="spot">
+                        <h3 id="title"></h3> <br>
+                        <h4 id="artist"></h4>
+
+                    </div>
+                    <img id="album" src="./img/spotify.png">
+                </div>
+
+
+            </div>
+
+        </section>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="./api/OpenWeatherMap/main.js"></script>
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+
+    <script src="app.js"></script>
+
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    window.onload =
+        setTimeout(function() {
+            document.getElementById("loading").style.display = "none";
+        }, 2500);
+
+
+    $(document).on('keypress', function(e) {
+        if (e.which == 13) {
+            if ($("#busq-google").val() != "") {
+                window.open('http://google.com/search?q=' + $("#busq-google").val(), "_blank");
+                $("#busq-google").val(null);
+            }
+            if ($("#busq-yt").val() != "") {
+                window.open('https://www.youtube.com/results?search_query=' + $("#busq-yt").val(), "_blank");
+                $("#busq-yt").val(null);
+            }
+            if ($("#busq-spotify").val() != "") {
+                window.open('https://open.spotify.com/search/' + $("#busq-spotify").val(), "_blank");
+                $("#busq-spotify").val(null);
+            }
+            if ($("#comando").val() != "") {
+                readOutLoud($("#comando").val(), $("#comando").val(), $("#comando").val(), $("#comando").val());
+                $("#comando").val(null);
+            }
+            if ($("#busq-google").val() == "" && $("#busq-yt").val() == "" && $("#busq-spotify").val() == "") {
+                void(0);
+            }
+        }
+
+    });
+
+    $(function() {
+        $('img').click(function() {
+
+            if ($(this).attr('id') == 'g') {
+
+                window.open('http://google.com/search?q=' + $("#busq-google").val(), "_blank");
+                $("#busq-google").val(null);
+
+            } else if ($(this).attr('id') == 'yt') {
+
+                window.open('https://www.youtube.com/results?search_query=' + $("#busq-yt").val(), "_blank");
+                $("#busq-yt").val(null);
+            } else if ($(this).attr('id') == 'spotifyb') {
+
+                window.open('https://open.spotify.com/search/' + $("#busq-spotify").val(), "_blank");
+                $("#busq-spotify").val(null);
+            }
+
+
+        });
+    });
+</script>
+
+</html>
