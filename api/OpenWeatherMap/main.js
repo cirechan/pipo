@@ -68,7 +68,7 @@ $(document).ready(function() {
 
     }
 
-    // playSpotify();
+    playSpotify();
     recuadroH();
     mueveReloj();
     getLocation();
