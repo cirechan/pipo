@@ -15,6 +15,10 @@
     --spotify2: rgba(51, 53, 54, 0.795);
     --spotify3: rgba(85, 179, 127, 0.877);
     --spotify4: rgba(129, 145, 151, 0.795);
+    --rojoREC1: #ff0000;
+    --rojoREC2: #f87676;
+    --rojoREC3: #630f0f;
+    --rojoREC4: #c53737;
 }
 
 * {
@@ -27,6 +31,8 @@
 
 body {
     min-width: 1400px;
+    overflow: hidden;
+    background: linear-gradient(to right top, var(--deg1), var(--deg2));
 }
 
 #loading {
@@ -50,12 +56,17 @@ body {
     font-family: 'Ropa Sans', sans-serif;
 }
 
+.container {
+    padding: 1rem;
+}
+
 main {
     min-height: 100vh;
     background: linear-gradient(to right top, var(--deg1), var(--deg2));
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 2rem;
 }
 
 .glass {
@@ -214,10 +225,11 @@ main {
 #condition {
     font-size: 25px;
     text-transform: uppercase;
-    padding-left: 5px;
+    padding-left: 10px;
     color: var(--negro);
     font-family: 'Ropa Sans', sans-serif;
     font-weight: bolder;
+    word-wrap: break-word;
 }
 
 .link img {
@@ -275,34 +287,29 @@ main {
     opacity: 0.7;
 }
 
-#glow {
+.active::before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    transition-delay: 0.5s;
-    z-index: 2;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #ff00009c, #ff000000, #830000, #ff0000, #96080800);
+    background-size: 400%;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    z-index: -1;
+    animation: glower 10s ease-in-out;
+    filter: blur(10rem);
 }
 
-#glow.active {
-    background: linear-gradient(270deg, var(--gris1), var(--gris3), var(--gris2), var(--azul));
-    background-size: 1000% 1000%;
-    -webkit-animation: fondo 10s ease infinite;
-    -moz-animation: fondo 10s ease infinite;
-    animation: AnimationName 10s ease infinite;
-}
-
-@-webkit-keyframes fondo {
+@keyframes glower {
     0% {
-        background-position: 0% 50%
+        background-position: 0 0;
     }
     50% {
-        background-position: 100% 50%
+        background-position: 400% 0;
     }
     100% {
-        background-position: 0% 50%
+        background-position: 0 0;
     }
 }
 

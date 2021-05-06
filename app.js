@@ -23,7 +23,6 @@ btn.addEventListener('click', function() {
 
 function glow() {
     var glower = document.getElementById('glow');
-
     glower.classList.toggle("active");
 }
 
@@ -33,14 +32,12 @@ recognition.onstart = function() {
     glow();
 
     setTimeout(function() {
-
         glow();
         recognition.stop();
         console.log('Speech recognition has stopped.');
     }, 5000);
 
 };
-
 
 
 recognition.onresult = function(event) {
@@ -171,7 +168,9 @@ function playSpotify() { //Función para reproductor de Spotify
         const player = new Spotify.Player({
             name: 'PIPO',
             volume: 0.4,
-            getOAuthToken: cb => { cb("BQB68U1JhSy2dKIPLDqzclHi9nS-CK1FB3-En-CNqlQKYQ-HPA-PO-aOcuLV91O-q-5gbzKCdmytEAzjGdvcBGzFX0RgTBNS8gEn5knLPixAERBgF7pLKKlg9NXxdkYBi3NX9InQM1OoDbDB8GfPusZYBAsfaK3ZTkeN"); }
+            getOAuthToken: cb => {
+                cb("BQB68U1JhSy2dKIPLDqzclHi9nS-CK1FB3-En-CNqlQKYQ-HPA-PO-aOcuLV91O-q-5gbzKCdmytEAzjGdvcBGzFX0RgTBNS8gEn5knLPixAERBgF7pLKKlg9NXxdkYBi3NX9InQM1OoDbDB8GfPusZYBAsfaK3ZTkeN");
+            }
         });
 
 
