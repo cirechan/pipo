@@ -301,6 +301,20 @@ main {
     filter: blur(10rem);
 }
 
+.pipo::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #ff000000, rgba(108, 199, 235, 0.795), #ffffff, rgba(111, 177, 105, 0.877), #96080800);
+    background-size: 400%;
+    width: calc(100% + 25px);
+    height: calc(100% + 55px);
+    z-index: -1;
+    animation: glower 12s ease-in-out;
+    filter: blur(10rem);
+}
+
 @keyframes glower {
     0% {
         background-position: 0 0;
@@ -510,10 +524,20 @@ h1:hover {
 
 .respuesta {
     position: absolute;
-    top: 10rem;
+    bottom: 10rem;
     max-width: 92%;
     margin-right: 2rem;
     opacity: 0.6;
+}
+
+.pregunta {
+    position: absolute;
+    right: 0px;
+    bottom: 5rem;
+    max-width: 92%;
+    margin-right: 2rem;
+    opacity: 0.6;
+    background-color: var(--gris2);
 }
 
 #spotify {
