@@ -18,12 +18,14 @@ btn.addEventListener('click', function() {
     recognition.start();
     recognition.lang = 'es-ES';
 
+
 });
 
 
 function glow() {
     var glower = document.getElementById('glow');
     glower.classList.toggle("active");
+    console.log("Glow");
 }
 
 
@@ -32,9 +34,10 @@ recognition.onstart = function() {
     glow();
 
     setTimeout(function() {
-        glow();
+
         recognition.stop();
         console.log('Speech recognition has stopped.');
+        glow();
     }, 5000);
 
 };
@@ -50,7 +53,7 @@ recognition.onresult = function(event) {
     const pregunta = transcript.substring(6); // pregunta
     readOutLoud(transcript, busqueda, pregunta, busquedaYT);
     console.log(busqueda);
-    glow();
+
 
 };
 
@@ -269,7 +272,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT) {
     speech.text = "Disculpa, no te he entendido";
 
 
-    if (message.includes('busca en Google')) {
+    if (message.toLowerCase().includes('busca en google')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
 
