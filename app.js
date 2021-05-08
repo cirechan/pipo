@@ -1,6 +1,8 @@
-const btn = document.querySelector('.talk');
-const pregunta = document.querySelector('.content-pregunta');
-const content = document.querySelector('.content-respuesta');
+const btn = document.querySelector('#micro');
+const respuesta = document.querySelector('.content-respuesta');
+const preguntas = document.querySelector('.content-pregunta');
+const contenedorRespuesta = document.querySelector('.respuesta');
+const contenedorPregunta = document.querySelector('.pregunta');
 const imagenes = document.querySelector('.imagenes');
 
 
@@ -10,61 +12,121 @@ var recognition = new SpeechRecognition();
 const afirmacion = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const datas = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const estado = ["Lista pa la guerra ya tu sabe", "Podría estar jugando al LoL", "Podría estar jugando al Ruina", "Chilling", "Le acabo de desear a mi jungla que se tire de un cuarto piso", "Aquí en el gymnasio"];
+const comandoError = ["Eso no era un comando que yo conozca, prueba de nuevo", "No te he entendido, vuelve a intentarlo"];
 
 
+//Lottie animations
+const svgContainer = document.getElementById('micro');
+const svgCpipo = document.getElementById('svg-pipo');
+const question = document.getElementById('question');
+const loading = document.getElementById('loading-animation');
 
-//listener
 
-btn.addEventListener('click', function() {
+const micro1 = bodymovin.loadAnimation({
+    wrapper: svgContainer,
+    animType: 'svg',
+    loop: false,
+    autoplay: false,
+    path: "https://assets10.lottiefiles.com/packages/lf20_4V7Rkx.json"
+});
+const animPipo = bodymovin.loadAnimation({
+    wrapper: svgCpipo,
+    animType: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'svg/pipo-hablando.json'
+});
+const animQuestion = bodymovin.loadAnimation({
+    wrapper: question,
+    animType: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'https://assets8.lottiefiles.com/private_files/lf30_biksmz70.json'
+});
+const animLoading = bodymovin.loadAnimation({
+    wrapper: loading,
+    animType: 'svg',
+    loop: false,
+    autoplay: true,
+    path: 'svg/loading.json'
+});
+
+
+function loadingAnimation() {
+    animLoading.setDirection(1);
+    animLoading.goToAndPlay(0, true);
+}
+
+btn.addEventListener('click', () => {
+    micro1.setDirection(1);
+    micro1.goToAndPlay(0, true);
     recognition.start();
     recognition.lang = 'es-ES';
-
+    setTimeout(function() {
+        micro1.setDirection(-1);
+        micro1.goToAndPlay(100, true);
+    }, 5000);
 
 });
 
 
-function glow() {
-    var glower = document.getElementById('glow');
-    glower.classList.toggle("active");
-    console.log("Glow");
-}
-
+//listener 
 function hablaPipo() {
-    var glower = document.getElementById('glow');
-    glower.classList.toggle("pipo");
-    setTimeout(function() {
+    svgCpipo.classList.remove('hide');
+    contenedorRespuesta.classList.remove('hide');
+    animPipo.setDirection(1);
+    animPipo.goToAndPlay(0, true);
 
-        glower.classList.toggle("pipo");
-        console.log("Habla PIPO");
-    }, 2500);
+    animPipo.addEventListener('complete', () => {
+
+        animPipo.setDirection(-1);
+        animPipo.goToAndPlay(0, false);
+    })
+
 
 }
 
+function preguntaTexto() {
+    question.classList.remove('hide');
+    contenedorPregunta.classList.remove('hide');
+    animQuestion.setDirection(1);
+    animQuestion.goToAndPlay(0, true);
+
+
+    animQuestion.addEventListener('complete', () => {
+
+        animQuestion.setDirection(-1);
+        animQuestion.goToAndPlay(0, false);
+
+    })
+
+
+}
 
 recognition.onstart = function() {
     console.log('voice is activated');
-    glow();
+
 
     setTimeout(function() {
 
         recognition.stop();
         console.log('Speech recognition has stopped.');
-        glow();
-    }, 5000);
+
+    }, 5000)
 
 };
+
 
 
 recognition.onresult = function(event) {
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
-    pregunta.innerHTML = "HELLO";
-    console.log("DOM");
-    content.style.padding = "50px 10px 20px 30px";
     const busqueda = transcript.substring(15); //busqueda google
     const busquedaYT = transcript.substring(16); //busqueda YT
-    const pregunta = transcript.substring(6); // pregunta
-    readOutLoud(transcript, busqueda, pregunta, busquedaYT);
+    const pregunta = transcript.substring(6); // pregunta 
+    const busquedaSpotify = transcript.substring(17); //busqueda SPOTIFY
+
+    readOutLoud(transcript, busqueda, pregunta, busquedaYT, busquedaSpotify);
 
     console.log(busqueda);
 
@@ -279,30 +341,34 @@ function loginSpotify() {
 }
 
 
-function readOutLoud(message, busqueda, pregunta, busquedaYT) {
+function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     const speech = new SpeechSynthesisUtterance();
 
-    speech.text = "Disculpa, no te he entendido";
+    const noEntiendo = comandoError[Math.floor(Math.random() * comandoError.length)]
+    speech.text = noEntiendo;
+    respuesta.textContent = noEntiendo;
 
-    pregunta.textContent = message;
+    preguntas.textContent = message;
 
     if (message.toLowerCase().includes('busca en google')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
+        respuesta.textContent = finalText;
 
         window.open('http://google.com/search?q=' + busqueda, "_blank");
     }
     if (message.toLowerCase().includes('busca en youtube')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
+        respuesta.textContent = finalText;
 
         window.open('https://www.youtube.com/results?search_query=' + busquedaYT, "_blank");
     }
     if (message.toLowerCase().includes('busca en spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
-
-        window.open('https://open.spotify.com/search/' + busquedaYT, "_blank");
+        respuesta.textContent = finalText;
+        window.open('https://open.spotify.com/search/' + busquedaSpotify, "_blank");
     }
 
     if (message.toLowerCase().includes('qué es')) {
@@ -360,8 +426,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT) {
     if (message.toLowerCase().includes("tiempo")) {
         const finalText = "Sal de casa anormal";
         speech.text = finalText;
-        content.textContent = finalText;
-        imagenes.textContent = "";
+        respuesta.textContent = finalText;
     }
     if (message.toLowerCase().includes("quién eres")) {
         const finalText = "Soy PIPO, tu asistente virtual";
@@ -393,13 +458,13 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT) {
     }
 
 
-
-
+    preguntaTexto();
+    hablaPipo();
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
     window.speechSynthesis.speak(speech);
 
-    hablaPipo();
+
 
 };

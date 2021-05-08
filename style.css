@@ -7,7 +7,7 @@
     --negro: #252525;
     --gris3: rgba(255, 255, 255, 0.05);
     --sombra: rgba(122, 122, 122, 0.11);
-    --azul: rgba(108, 199, 235, 0.795);
+    --azul: #6cc7ebcb;
     --verdeSpotify: #00d95e65;
     --rojoYoutube: #FF000065;
     --azulTiempo: #88C3D675;
@@ -54,6 +54,13 @@ body {
     font-size: xx-large;
     text-transform: uppercase;
     font-family: 'Ropa Sans', sans-serif;
+}
+
+#loading-animation {
+    z-index: 999;
+    position: absolute;
+    top: 25rem;
+    opacity: 0.6;
 }
 
 .container {
@@ -124,18 +131,6 @@ main {
     overflow: hidden;
     margin: 0.5rem;
     opacity: 0.95;
-    animation: 0.25s ease-out 0s 1 rotacion;
-}
-
-@keyframes rotacion {
-    0% {
-        transform: rotate(-0.5turn);
-        opacity: 0.01;
-    }
-    100% {
-        transform: rotate(0turn);
-        opacity: 0.8;
-    }
 }
 
 .user h3 {
@@ -266,91 +261,6 @@ main {
     cursor: default;
 }
 
-.pro {
-    background: linear-gradient(to right top, var(--deg1), var(--deg2));
-    border-radius: 2rem;
-    color: var(--blanco);
-    padding: 1rem;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    width: 250px;
-    animation: 0.5s ease-in-out;
-    margin-bottom: 1rem;
-}
-
-.pro:hover {
-    cursor: pointer;
-    color: var(--blanco);
-    background: linear-gradient( to right top, var(--deg2), var(--deg1));
-    opacity: 0.7;
-}
-
-.active::before {
-    content: '';
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background: linear-gradient(45deg, #ff00009c, #ff000000, #830000, #ff0000, #96080800);
-    background-size: 400%;
-    width: calc(100% + 5px);
-    height: calc(100% + 5px);
-    z-index: -1;
-    animation: glower 10s ease-in-out;
-    filter: blur(10rem);
-}
-
-.pipo::before {
-    content: '';
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background: linear-gradient(45deg, #ff000000, rgba(108, 199, 235, 0.795), #ffffff, rgba(111, 177, 105, 0.877), #96080800);
-    background-size: 400%;
-    width: calc(100% + 25px);
-    height: calc(100% + 55px);
-    z-index: -1;
-    animation: glower 12s ease-in-out;
-    filter: blur(10rem);
-}
-
-@keyframes glower {
-    0% {
-        background-position: 0 0;
-    }
-    50% {
-        background-position: 400% 0;
-    }
-    100% {
-        background-position: 0 0;
-    }
-}
-
-@-moz-keyframes fondo {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-@keyframes fondo {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
-}
-
 h1,
 h2,
 h3,
@@ -358,30 +268,6 @@ h4,
 h5,
 h6 {
     opacity: 0.6;
-}
-
-.pro img {
-    position: absolute;
-    height: 8rem;
-    left: 0%;
-    top: 5%;
-    opacity: 0.6;
-    z-index: 3;
-}
-
-.pro h2 {
-    width: 35%;
-    opacity: 0.6;
-    color: var(--negro);
-    font-family: 'Ropa Sans', sans-serif;
-    font-size: x-large;
-    z-index: 3;
-    font-weight: bolder;
-    font-size: x-large;
-    font-style: italic;
-    text-align: left;
-    margin-left: 125px;
-    text-transform: uppercase;
 }
 
 
@@ -501,7 +387,8 @@ h1:hover {
 
 .status {
     position: absolute;
-    width: 95%;
+    left: 0;
+    width: 80%;
     height: 4rem;
     bottom: 0;
     display: flex;
@@ -524,20 +411,121 @@ h1:hover {
 
 .respuesta {
     position: absolute;
-    bottom: 10rem;
+    left: 0;
+    bottom: 14rem;
     max-width: 92%;
     margin-right: 2rem;
+    opacity: 0.6;
+    display: flex;
+    justify-content: left;
+    vertical-align: middle;
+    align-items: center;
+    padding: 3rem;
+    max-width: 85%;
+    animation: mensajesRespuesta 0.25s ease-in-out;
+}
+
+.respuesta h3 {
+    margin-left: 3rem;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.respuesta img {
+    max-width: 5rem;
+    position: absolute;
+    left: 0;
+}
+
+#svg-pipo {
+    position: absolute;
+    left: -1rem;
+    align-items: center;
+    align-self: center;
+    width: 8rem;
+    pointer-events: none;
+}
+
+#question {
+    position: absolute;
+    right: 0;
+    margin-right: 0.5rem;
+    pointer-events: none;
+    height: 4rem;
+    width: 4rem;
     opacity: 0.6;
 }
 
 .pregunta {
     position: absolute;
+    opacity: 0.6;
+    display: flex;
+    justify-content: left;
+    vertical-align: middle;
+    align-items: center;
+    padding: 2rem;
+    max-width: 85%;
     right: 0px;
     bottom: 5rem;
     max-width: 92%;
-    margin-right: 2rem;
     opacity: 0.6;
     background-color: var(--gris2);
+    animation: mensajesPregunta 0.25s ease-in-out;
+}
+
+.pregunta img {
+    max-width: 5rem;
+    position: absolute;
+    right: 0;
+}
+
+.pregunta h3 {
+    margin-right: 2rem;
+    font-size: 25px;
+    font-style: italic;
+}
+
+@keyframes mensajesPregunta {
+    from {
+        opacity: 0;
+        right: -2rem;
+    }
+    to {
+        opacity: 0.6;
+        right: 0;
+    }
+}
+
+@keyframes mensajesRespuesta {
+    from {
+        opacity: 0;
+        left: -2rem;
+    }
+    to {
+        opacity: 0.6;
+        left: 0;
+    }
+}
+
+#micro {
+    min-width: fit-content;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    cursor: pointer;
+    bottom: -1.5rem;
+    right: 0;
+    padding: 0;
+    opacity: 0.6;
+}
+
+#micro:hover {
+    min-width: 25px;
+}
+
+.hide {
+    display: none;
 }
 
 #spotify {
