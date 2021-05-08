@@ -58,11 +58,6 @@ function loadingAnimation() {
     animLoading.goToAndPlay(0, true);
 }
 
-btn.addEventListener('click', () => {
-
-    recognition.start();
-    recognition.lang = 'es-ES';
-});
 
 
 //listener 
@@ -99,38 +94,205 @@ function preguntaTexto() {
 }
 
 //Reconocimiento de voz
-recognition.onstart = function() {
-    console.log('voice is activated');
-    micro1.setDirection(1);
-    micro1.goToAndPlay(0, true);
+var activo = 0; // botón activo 
+btn.addEventListener('click', () => {
 
-    setTimeout(function() {
+    if (activo === 0) {
+        recognition.start();
+        recognition.lang = 'es-ES';
+        activo = 1;
+    } else {
 
         recognition.stop();
         console.log('Speech recognition has stopped.');
         micro1.setDirection(-1);
         micro1.goToAndPlay(100, true);
-    }, 5000)
+        activo = 0;
+    }
+});
 
+recognition.onstart = function() {
+
+    console.log('voice is activated');
+    micro1.setDirection(1);
+    micro1.goToAndPlay(0, true);
+
+    if (activo === 0) {
+        setTimeout(function() {
+
+            recognition.stop();
+            console.log('Speech recognition has stopped.');
+            micro1.setDirection(-1);
+            micro1.goToAndPlay(100, true);
+        }, 5000)
+    }
 };
 
 
 //Resultado del reconocimineto
 recognition.onresult = function(event) {
+
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
     const busqueda = transcript.substring(15); //busqueda google
-
     const busquedaYT = transcript.substring(16); //busqueda YT
     const pregunta = transcript.substring(6); // pregunta 
     const busquedaSpotify = transcript.substring(17); //busqueda SPOTIFY
 
     readOutLoud(transcript, busqueda, pregunta, busquedaYT, busquedaSpotify);
+};
 
-    console.log(busqueda);
+//Interpretación del comando
+
+function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
+
+    const speech = new SpeechSynthesisUtterance();
+    const noEntiendo = comandoError[Math.floor(Math.random() * comandoError.length)]
+    speech.text = noEntiendo;
+    respuesta.textContent = noEntiendo;
+    preguntas.textContent = message;
+
+    if (message.toLowerCase().includes('busca en google')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+        window.open('http://google.com/search?q=' + busqueda, "_blank");
+    }
+    if (message.toLowerCase().includes('busca')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+        window.open('http://google.com/search?q=' + pregunta, "_blank");
+    }
+    if (message.toLowerCase().includes('busca en youtube')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+        window.open('https://www.youtube.com/results?search_query=' + busquedaYT, "_blank");
+    }
+    if (message.toLowerCase().includes('busca en spotify')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+        window.open('https://open.spotify.com/search/' + busquedaSpotify, "_blank");
+    }
+    if (message.toLowerCase().includes('qué es')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+
+        window.open('http://google.com/search?q=' + message, "_blank");
+    }
+    if (message.toLowerCase().includes('quién es')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+
+        window.open('http://google.com/search?q=' + message, "_blank");
+    }
+    if (message.toLowerCase().includes('pon en youtube')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+        playYoutube(busqueda);
+    }
+    if (message.toLowerCase().includes('activa spotify')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+        playSpotify();
+    }
+    if (message.toLowerCase().includes('desactiva spotify')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+        playSpotify();
+    }
+    if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
+        const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+    }
+    if (message.toLowerCase().includes('qué tal') || message.toLowerCase().includes('cómo estás') || message.toLowerCase().includes('cómo te encuentras')) {
+        const finalText = estado[Math.floor(Math.random() * estado.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+    }
+    if (message.toLowerCase().includes('qué día es') || message.toLowerCase().includes('a qué día estamos')) {
+        var dia = document.getElementById("day").innerHTML;
+        const finalText = "Hoy es: " + dia;
+        respuesta.textContent = finalText;
+        speech.text = "Hoy es" + dia;;
+    }
+    if (message.toLowerCase().includes('qué día es hoy')) {
+        var mL = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        var dia = document.getElementById("day").innerHTML;
+        var diaN = document.getElementById("fecha").innerHTML.slice(0, 2);
+        if (diaN < 10) {
+            diaN = diaN.slice(1, 2)
+        }
+        var mesN = document.getElementById("fecha").innerHTML.slice(3, 5);
+
+        const finalText = "Hoy es " + dia + " " + diaN + " de " + mL[parseInt(mesN) - 1];
+        respuesta.textContent = finalText;
+        speech.text = "Hoy es" + dia + diaN + "de" + mL[parseInt(mesN) - 1];
+    }
+    if (message.toLowerCase().includes("tiempo")) {
+        var grados = document.getElementById("temp-main").innerHTML;
+        var condition = document.getElementById("condition").innerHTML;
+        var condicion = "";
+        if (condition.toLowerCase().includes("despejado") || condition.toLowerCase().includes("nublado")) {
+            condicion = "está " + condition;
+        } else {
+            condicion = "hay " + condition;
+        }
+
+
+        const finalText = "Ahora mismo hay " + grados + " y " + condicion;
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+    }
+    if (message.toLowerCase().includes("quién eres")) {
+        const finalText = "Soy PIPO, tu asistente virtual";
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+    }
+    if (message.toLowerCase().includes("hora")) {
+        var today = new Date();
+
+
+        var hora = today.getHours() + " horas y " + today.getMinutes() + " minutos";
+
+        if (parseInt(today.getMinutes()) == 0) {
+            hora = today.getHours() + " en punto";
+        }
+        speech.text = "Son las" + hora;
+        respuesta.textContent = "Son las: " + hora;
+
+    }
+    if (message.toLowerCase().includes("adiós")) {
+        const finalText = "Que vaya bien, hasta luego";
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+    }
+
+    preguntaTexto();
+    hablaPipo();
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+    window.speechSynthesis.speak(speech);
 
 };
 
+
+
+// Funciones 
 
 function playYoutube(search) { //Función para reproducir video de YT
 
@@ -160,79 +322,6 @@ function playYoutube(search) { //Función para reproducir video de YT
 
     });
 }
-/*
-// Get the hash of the url
-const hash = window.location.hash
-    .substring(1)
-    .split('&')
-    .reduce(function(initial, item) {
-        if (item) {
-            var parts = item.split('=');
-            initial[parts[0]] = decodeURIComponent(parts[1]);
-        }
-        return initial;
-    }, {});
-window.location.hash = '';
-
-// Set token
-let _token = hash.access_token;
-
-const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-// Replace with your app's client ID, redirect URI and desired scopes
-const clientId = '2102d6bf57714410a8f50dd1ccadc571';
-const redirectUri = 'https://spotify-web-playback.glitch.me';
-const scopes = [
-    'streaming',
-    'user-read-birthdate',
-    'user-read-private',
-    'user-modify-playback-state'
-];
-
-// If there is no token, redirect to Spotify authorization
-if (!_token) {
-    window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-}
-
-// Set up the Web Playback SDK
-
-window.onSpotifyPlayerAPIReady = () => {
-    const player = new Spotify.Player({
-        name: 'PIPO',
-        getOAuthToken: cb => { cb(_token); }
-    });
-
-    // Error handling
-    player.on('initialization_error', e => console.error(e));
-    player.on('authentication_error', e => console.error(e));
-    player.on('account_error', e => console.error(e));
-    player.on('playback_error', e => console.error(e));
-
-    // Playback status updates
-    player.on('player_state_changed', state => {
-        console.log(state)
-        $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
-        $('#current-track-name').text(state.track_window.current_track.name);
-    });
-
-    // Ready
-    player.on('ready', data => {
-        console.log('Ready with Device ID', data.device_id);
-
-        // Play a track using our new device ID
-        play(data.device_id);
-    });
-
-    // Connect to the player!
-    player.connect();
-}
-
-
-*/
-
-
-
-
 
 function playSpotify() { //Función para reproductor de Spotify
 
@@ -340,159 +429,3 @@ function loginSpotify() {
 }
 
 */
-function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
-    const speech = new SpeechSynthesisUtterance();
-
-    const noEntiendo = comandoError[Math.floor(Math.random() * comandoError.length)]
-    speech.text = noEntiendo;
-    respuesta.textContent = noEntiendo;
-
-    preguntas.textContent = message;
-
-    if (message.toLowerCase().includes('busca en google')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-        window.open('http://google.com/search?q=' + busqueda, "_blank");
-    }
-    if (message.toLowerCase().includes('busca')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-        window.open('http://google.com/search?q=' + pregunta, "_blank");
-    }
-    if (message.toLowerCase().includes('busca en youtube')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-        window.open('https://www.youtube.com/results?search_query=' + busquedaYT, "_blank");
-    }
-    if (message.toLowerCase().includes('busca en spotify')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-        window.open('https://open.spotify.com/search/' + busquedaSpotify, "_blank");
-    }
-
-    if (message.toLowerCase().includes('qué es')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-
-        window.open('http://google.com/search?q=' + message, "_blank");
-    }
-
-    if (message.toLowerCase().includes('quién es')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-
-        window.open('http://google.com/search?q=' + message, "_blank");
-    }
-    if (message.toLowerCase().includes('pon en youtube')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-        playYoutube(busqueda);
-    }
-    if (message.toLowerCase().includes('activa spotify')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-        playSpotify();
-    }
-
-    if (message.toLowerCase().includes('desactiva spotify')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-        playSpotify();
-    }
-    if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
-        const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-    }
-    if (message.toLowerCase().includes('qué tal') || message.toLowerCase().includes('cómo estás') || message.toLowerCase().includes('cómo te encuentras')) {
-        const finalText = estado[Math.floor(Math.random() * estado.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-    }
-    if (message.toLowerCase().includes('qué día es') || message.toLowerCase().includes('a qué día estamos')) {
-        var dia = document.getElementById("day").innerHTML;
-        const finalText = "Hoy es: " + dia;
-        respuesta.textContent = finalText;
-        speech.text = "Hoy es" + dia;;
-    }
-    if (message.toLowerCase().includes('qué día es hoy')) {
-        var mL = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-        var dia = document.getElementById("day").innerHTML;
-        var diaN = document.getElementById("fecha").innerHTML.slice(0, 2);
-        if (diaN < 10) {
-            diaN = diaN.slice(1, 2)
-        }
-        var mesN = document.getElementById("fecha").innerHTML.slice(3, 5);
-
-        const finalText = "Hoy es " + dia + " " + diaN + " de " + mL[parseInt(mesN) - 1];
-        respuesta.textContent = finalText;
-        speech.text = "Hoy es" + dia + diaN + "de" + mL[parseInt(mesN) - 1];
-    }
-
-    //POR CAMBIAR *********************
-    if (message.toLowerCase().includes("tiempo")) {
-        var grados = document.getElementById("temp-main").innerHTML;
-        var condition = document.getElementById("condition").innerHTML;
-        var condicion = "";
-        if (condition.toLowerCase().includes("despejado") || condition.toLowerCase().includes("nublado")) {
-            condicion = "está " + condition;
-        } else {
-            condicion = "hay " + condition;
-        }
-
-
-        const finalText = "Ahora mismo hay " + grados + " y " + condicion;
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-    }
-    if (message.toLowerCase().includes("quién eres")) {
-        const finalText = "Soy PIPO, tu asistente virtual";
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-
-    }
-
-    if (message.toLowerCase().includes("hora")) {
-        var today = new Date();
-
-
-        var hora = today.getHours() + " horas y " + today.getMinutes() + " minutos";
-
-        if (parseInt(today.getMinutes()) == 0) {
-            hora = today.getHours() + " en punto";
-        }
-        speech.text = "Son las" + hora;
-        respuesta.textContent = "Son las: " + hora;
-
-    }
-
-    if (message.toLowerCase().includes("adiós")) {
-        const finalText = "Que vaya bien, hasta luego";
-        speech.text = finalText;
-        respuesta.textContent = finalText;
-    }
-
-
-    preguntaTexto();
-    hablaPipo();
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 1;
-    window.speechSynthesis.speak(speech);
-
-
-
-};
