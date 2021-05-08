@@ -58,15 +58,9 @@ function loadingAnimation() {
 }
 
 btn.addEventListener('click', () => {
-    micro1.setDirection(1);
-    micro1.goToAndPlay(0, true);
+
     recognition.start();
     recognition.lang = 'es-ES';
-    setTimeout(function() {
-        micro1.setDirection(-1);
-        micro1.goToAndPlay(100, true);
-    }, 5000);
-
 });
 
 
@@ -103,21 +97,24 @@ function preguntaTexto() {
 
 }
 
+//Reconocimiento de voz
 recognition.onstart = function() {
     console.log('voice is activated');
-
+    micro1.setDirection(1);
+    micro1.goToAndPlay(0, true);
 
     setTimeout(function() {
 
         recognition.stop();
         console.log('Speech recognition has stopped.');
-
+        micro1.setDirection(-1);
+        micro1.goToAndPlay(100, true);
     }, 5000)
 
 };
 
 
-
+//Resultado del reconocimineto
 recognition.onresult = function(event) {
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
@@ -247,7 +244,7 @@ function playSpotify() { //Función para reproductor de Spotify
             name: 'PIPO',
             volume: 0.4,
             getOAuthToken: cb => {
-                cb("BQB68U1JhSy2dKIPLDqzclHi9nS-CK1FB3-En-CNqlQKYQ-HPA-PO-aOcuLV91O-q-5gbzKCdmytEAzjGdvcBGzFX0RgTBNS8gEn5knLPixAERBgF7pLKKlg9NXxdkYBi3NX9InQM1OoDbDB8GfPusZYBAsfaK3ZTkeN");
+                cb("BQCzZD4IQJq66fkKrJoUanTrLQ6Sq603eC27PfKFoXyLxLiYRw5v-iuAJyrEpTrLHwO-PDzNyS5Y0gc58HKX4zWUaYwpmjFBu12tsh_nIrLzM-ppOOK7X2hdYG0J5vhgkQMAx6I7B2z-CK7jZ-hU09XV_j7UNPAvGtST");
             }
         });
 
@@ -324,7 +321,7 @@ function recuadroH() {
     recuadro.style.display = "none";
 
 }
-
+/*
 function loginSpotify() {
 
 
@@ -340,7 +337,7 @@ function loginSpotify() {
     });
 }
 
-
+*/
 function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     const speech = new SpeechSynthesisUtterance();
 
@@ -380,20 +377,22 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     if (message.toLowerCase().includes('pon en youtube')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
+        respuesta.textContent = finalText;
 
         playYoutube(busqueda);
     }
     if (message.toLowerCase().includes('activa spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
+        respuesta.textContent = finalText;
 
-        loginSpotify();
+
         playSpotify();
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
-
+        respuesta.textContent = finalText;
         playSpotify();
     }
     if (message.toLowerCase().includes('qué tal') || message.toLowerCase().includes('cómo estás') || message.toLowerCase().includes('cómo te encuentras')) {
@@ -405,7 +404,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     if (message.toLowerCase().includes('qué día es') || message.toLowerCase().includes('a qué día estamos')) {
         var dia = document.getElementById("day").innerHTML;
         const finalText = "Hoy es: " + dia;
-        content.textContent = finalText;
+        respuesta.textContent = finalText;
         speech.text = "Hoy es" + dia;;
     }
     if (message.toLowerCase().includes('qué día es hoy')) {
@@ -418,7 +417,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         var mesN = document.getElementById("fecha").innerHTML.slice(3, 5);
 
         const finalText = "Hoy es: " + dia + " " + diaN + " de " + mL[parseInt(mesN) - 1];
-        content.textContent = finalText;
+        respuesta.textContent = finalText;
         speech.text = "Hoy es" + dia + diaN + "de" + mL[parseInt(mesN) - 1];
     }
 
@@ -431,7 +430,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     if (message.toLowerCase().includes("quién eres")) {
         const finalText = "Soy PIPO, tu asistente virtual";
         speech.text = finalText;
-        content.textContent = finalText;
+        respuesta.textContent = finalText;
 
     }
 
@@ -444,17 +443,15 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         if (parseInt(today.getMinutes()) == 0) {
             hora = today.getHours() + " en punto";
         }
-
         speech.text = "Son las" + hora;
-        content.textContent = "Son las: " + hora;
-        imagenes.textContent = "";
+        respuesta.textContent = "Son las: " + hora;
+
     }
 
     if (message.toLowerCase().includes("adiós")) {
         const finalText = "Que vaya bien, hasta luego";
         speech.text = finalText;
-        imagenes.textContent = "";
-        content.textContent = finalText;
+        respuesta.textContent = finalText;
     }
 
 

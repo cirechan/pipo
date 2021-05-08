@@ -113,10 +113,16 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    vertical-align: middle;
+    justify-content: center;
     text-align: center;
     background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
     border-radius: 2rem;
+    max-width: 30%;
+}
+
+.user {
+    margin-bottom: 2rem;
 }
 
 .user .logo {
@@ -148,6 +154,8 @@ main {
 
 .links {
     margin-top: -1rem;
+    max-width: 80%;
+    padding: 0;
 }
 
 .link {
@@ -158,7 +166,7 @@ main {
     padding: 1rem 3rem;
     align-items: center;
     overflow: hidden;
-    justify-content: center;
+    justify-content: end;
     border-radius: 1rem;
     z-index: 3;
 }
@@ -269,6 +277,72 @@ h5,
 h6 {
     opacity: 0.6;
     cursor: default;
+}
+
+#spotify {
+    position: relative;
+    width: 100%;
+    display: flex;
+    height: 6rem;
+    margin: 0.5rem auto;
+    background: linear-gradient(270deg, rgba(111, 177, 105, 0.877), rgba(51, 53, 54, 0.795), rgba(85, 179, 127, 0.877), rgba(129, 145, 151, 0.795));
+    background-size: 1000% 1000%;
+    -webkit-animation: AnimationName 25s ease infinite;
+    -moz-animation: AnimationName 25s ease infinite;
+    animation: AnimationName 25s ease infinite;
+    box-shadow: 6px 6px 20px var(--sombra);
+    border-radius: 2rem;
+    justify-content: start;
+    vertical-align: middle;
+    text-align: start;
+    overflow: hidden;
+    animation: spotify 0.5s ease-in-out;
+}
+
+#spot {
+    padding-left: 2rem;
+    z-index: 2;
+    width: 100%;
+    backdrop-filter: blur(0.125rem);
+}
+
+#title {
+    padding-top: 1rem;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--blanco);
+    opacity: 0.8;
+    z-index: 3;
+    word-wrap: normal;
+    padding-right: 2rem;
+}
+
+#artist {
+    font-size: 16px;
+    color: var(--blanco);
+    opacity: 0.8;
+    z-index: 3;
+    margin-top: -0.5rem;
+    padding-right: 1rem;
+}
+
+#album {
+    opacity: 1;
+    position: absolute;
+    background-blend-mode: normal;
+    width: 200%;
+    left: -50%;
+}
+
+@keyframes spotify {
+    from {
+        opacity: 0;
+        bottom: -2rem;
+    }
+    to {
+        opacity: 0.8;
+        bottom: 0;
+    }
 }
 
 
@@ -531,62 +605,4 @@ input:focus {
 
 .hide {
     display: none;
-}
-
-#spotify {
-    position: absolute;
-    background: linear-gradient(270deg, rgba(111, 177, 105, 0.877), rgba(51, 53, 54, 0.795), rgba(85, 179, 127, 0.877), rgba(129, 145, 151, 0.795));
-    background-size: 1000% 1000%;
-    -webkit-animation: AnimationName 25s ease infinite;
-    -moz-animation: AnimationName 25s ease infinite;
-    animation: AnimationName 25s ease infinite;
-    bottom: -3.5rem;
-    right: 0;
-    width: 65%;
-    height: fit-content;
-    box-shadow: 6px 6px 20px var(--sombra);
-    border-radius: 2rem;
-    justify-content: start;
-    vertical-align: middle;
-    text-align: start;
-    overflow: hidden;
-    display: flex;
-}
-
-#spot {
-    margin-left: 2rem;
-}
-
-#title {
-    padding-top: 1rem;
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--blanco);
-    opacity: 0.6;
-    z-index: 3;
-    word-wrap: normal;
-    padding-right: 2rem;
-}
-
-#artist {
-    padding-bottom: 1rem;
-    font-size: 17px;
-    color: var(--blanco);
-    opacity: 0.6;
-    z-index: 3;
-    padding-right: 1rem;
-}
-
-#album {
-    opacity: 1;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-    background-blend-mode: normal;
-    height: 100%;
-}
-
-.imagenes img {
-    border-radius: 2rem;
 }
