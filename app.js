@@ -11,6 +11,7 @@ var recognition = new SpeechRecognition();
 
 const afirmacion = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const datas = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
+const cosas = ["Pedro de la Rosa mantiene todavía la vuelta rápida en carrera de la Fórmula 1 en el circuito de Bahréin", "El cometa Halley, es un cometa grande y brillante que orbita alrededor del Sol cada 75 años en promedio", "Los elefantes son capaces de localizar agua y de detectar lluvias a distancias de aproximadamente 250 km", " Las jirafas no emiten sonido alguno convirtiéndose de esta manera en el único mamífero con esta característica", "Se necesitan 200 litros de agua para producir un solo litro de gaseosa "];
 const estado = ["Lista pa la guerra ya tu sabe", "Podría estar jugando al LoL", "Podría estar jugando al Ruina", "Chilling", "Le acabo de desear a mi jungla que se tire de un cuarto piso", "Aquí en el gymnasio"];
 const comandoError = ["Eso no era un comando que yo conozca, prueba de nuevo", "No te he entendido, vuelve a intentarlo"];
 
@@ -119,6 +120,7 @@ recognition.onresult = function(event) {
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
     const busqueda = transcript.substring(15); //busqueda google
+
     const busquedaYT = transcript.substring(16); //busqueda YT
     const pregunta = transcript.substring(6); // pregunta 
     const busquedaSpotify = transcript.substring(17); //busqueda SPOTIFY
@@ -354,6 +356,13 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
 
         window.open('http://google.com/search?q=' + busqueda, "_blank");
     }
+    if (message.toLowerCase().includes('busca')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
+
+        window.open('http://google.com/search?q=' + pregunta, "_blank");
+    }
     if (message.toLowerCase().includes('busca en youtube')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
@@ -372,7 +381,14 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
 
-        window.open('http://google.com/search?q=' + pregunta, "_blank");
+        window.open('http://google.com/search?q=' + message, "_blank");
+    }
+
+    if (message.toLowerCase().includes('quién es')) {
+        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
+        speech.text = finalText;
+
+        window.open('http://google.com/search?q=' + message, "_blank");
     }
     if (message.toLowerCase().includes('pon en youtube')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
@@ -386,14 +402,19 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         speech.text = finalText;
         respuesta.textContent = finalText;
 
-
         playSpotify();
     }
+
     if (message.toLowerCase().includes('desactiva spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
         respuesta.textContent = finalText;
         playSpotify();
+    }
+    if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
+        const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
     }
     if (message.toLowerCase().includes('qué tal') || message.toLowerCase().includes('cómo estás') || message.toLowerCase().includes('cómo te encuentras')) {
         const finalText = estado[Math.floor(Math.random() * estado.length)];
@@ -416,14 +437,24 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         }
         var mesN = document.getElementById("fecha").innerHTML.slice(3, 5);
 
-        const finalText = "Hoy es: " + dia + " " + diaN + " de " + mL[parseInt(mesN) - 1];
+        const finalText = "Hoy es " + dia + " " + diaN + " de " + mL[parseInt(mesN) - 1];
         respuesta.textContent = finalText;
         speech.text = "Hoy es" + dia + diaN + "de" + mL[parseInt(mesN) - 1];
     }
 
     //POR CAMBIAR *********************
     if (message.toLowerCase().includes("tiempo")) {
-        const finalText = "Sal de casa anormal";
+        var grados = document.getElementById("temp-main").innerHTML;
+        var condition = document.getElementById("condition").innerHTML;
+        var condicion = "";
+        if (condition.toLowerCase().includes("despejado") || condition.toLowerCase().includes("nublado")) {
+            condicion = "está " + condition;
+        } else {
+            condicion = "hay " + condition;
+        }
+
+
+        const finalText = "Ahora mismo hay " + grados + " y " + condicion;
         speech.text = finalText;
         respuesta.textContent = finalText;
     }
