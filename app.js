@@ -398,7 +398,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     if (message.toLowerCase().includes('qué tal') || message.toLowerCase().includes('cómo estás') || message.toLowerCase().includes('cómo te encuentras')) {
         const finalText = estado[Math.floor(Math.random() * estado.length)];
         speech.text = finalText;
-        content.textContent = finalText;
+        respuesta.textContent = finalText;
 
     }
     if (message.toLowerCase().includes('qué día es') || message.toLowerCase().includes('a qué día estamos')) {
