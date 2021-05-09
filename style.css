@@ -577,16 +577,6 @@ input:focus {
 
 /*ACORDION*/
 
-@import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
-* {
-    box-sizing: border-box;
-}
-
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 .acordeon {
     position: absolute;
     top: -0.5rem;
@@ -597,6 +587,10 @@ input:focus {
     z-index: 99;
     max-height: 19rem;
     opacity: 0.8;
+}
+
+.acordeon h2 {
+    font-style: italic;
 }
 
 .accordion {
