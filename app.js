@@ -155,7 +155,11 @@ recognition.onresult = function(event) {
     const busquedaYT = transcript.substring(16); //busqueda YT
     const pregunta = transcript.substring(6); // pregunta 
     const busquedaSpotify = transcript.substring(17); //busqueda SPOTIFY
-
+    recognition.stop();
+    console.log('Speech recognition has stopped.');
+    micro1.setDirection(-1);
+    micro1.goToAndPlay(100, true);
+    activo = 0;
     readOutLoud(transcript, busqueda, pregunta, busquedaYT, busquedaSpotify);
 };
 
