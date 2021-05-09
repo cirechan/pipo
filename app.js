@@ -180,13 +180,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
 
         window.open('http://google.com/search?q=' + busqueda, "_blank");
     }
-    if (message.toLowerCase().includes('busca')) {
-        const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
-        speech.text = finalText;
-        respuesta.textContent = finalText;
 
-        window.open('http://google.com/search?q=' + pregunta, "_blank");
-    }
     if (message.toLowerCase().includes('busca en youtube')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
