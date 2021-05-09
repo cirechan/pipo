@@ -359,7 +359,7 @@ function playSpotify() { //Función para reproductor de Spotify
             name: 'PIPO',
             volume: 0.4,
             getOAuthToken: cb => {
-                cb("BQBIkfZOfiHAVLVygAa46aTvDt7WoZwgUmgGJ9NoH4RfsPBkl3fRPOqKEuONTybKq0jdSShSBmJWqN3pHEJ4G7ixlJ0Kow9s4JcBPIAyuqF42zKTuQhyAeK-TQ9jRv32KjrOpDZee12qGOUxJ5LovWayVYVbYOYx");
+                cb("BQC_gdmyKQbXSnE1o_NuSPuuba-PXaJmjJtAuo8KKepnnUf581uCzrO7dmfajeuA-rIfGmkxwiX7WwMcVZ6hzXHg8uLBLHs28VfEKPZM8_VlpFshWmrTCr1205f50hmH7azj-_gWfCDSgXaay6xsAtecBm9x_fGiB9XT");
             }
         });
 
