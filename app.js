@@ -93,6 +93,24 @@ function preguntaTexto() {
 
 }
 
+//Acordeón
+const items = document.querySelectorAll(".accordion button");
+
+function toggleAccordion() {
+    const itemToggle = this.getAttribute('aria-expanded');
+
+    for (i = 0; i < items.length; i++) {
+        items[i].setAttribute('aria-expanded', 'false');
+    }
+
+    if (itemToggle == 'false') {
+        this.setAttribute('aria-expanded', 'true');
+    }
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+
 //Reconocimiento de voz
 var activo = 0; // botón activo 
 btn.addEventListener('click', () => {
@@ -102,7 +120,6 @@ btn.addEventListener('click', () => {
         recognition.lang = 'es-ES';
         activo = 1;
     } else {
-
         recognition.stop();
         console.log('Speech recognition has stopped.');
         micro1.setDirection(-1);
@@ -116,16 +133,15 @@ recognition.onstart = function() {
     console.log('voice is activated');
     micro1.setDirection(1);
     micro1.goToAndPlay(0, true);
-
-    if (activo === 0) {
-        setTimeout(function() {
-
+    setTimeout(function() {
+        if (activo === 1) {
             recognition.stop();
             console.log('Speech recognition has stopped.');
             micro1.setDirection(-1);
             micro1.goToAndPlay(100, true);
-        }, 5000)
-    }
+            activo = 0;
+        }
+    }, 5000)
 };
 
 
@@ -335,7 +351,7 @@ function playSpotify() { //Función para reproductor de Spotify
             name: 'PIPO',
             volume: 0.4,
             getOAuthToken: cb => {
-                cb("BQCzZD4IQJq66fkKrJoUanTrLQ6Sq603eC27PfKFoXyLxLiYRw5v-iuAJyrEpTrLHwO-PDzNyS5Y0gc58HKX4zWUaYwpmjFBu12tsh_nIrLzM-ppOOK7X2hdYG0J5vhgkQMAx6I7B2z-CK7jZ-hU09XV_j7UNPAvGtST");
+                cb("BQDC5MsKtetWkjbU7K30Kr6kzAlHtgZqwF2zmFu0mc8ZVUu8-sgD4wOhWsc9NsalGBwCPiF48nmPMbS1HRd5lioeJDYO2NNzprSD6Mw3CYaeulHqo3kfaB_NtczkmlJpWomZljuag-zoUyejD2EUPnBfETtRm61WylzX");
             }
         });
 

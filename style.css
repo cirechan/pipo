@@ -187,7 +187,7 @@ main {
 
 .buscar {
     height: 75px;
-    width: 4rem;
+    width: 100%;
     border-radius: 0px 25px 25px 0px;
     display: flex;
     align-items: center;
@@ -228,11 +228,11 @@ main {
 #condition {
     font-size: 25px;
     text-transform: uppercase;
-    padding-left: 10px;
+    margin-left: 2rem;
     color: var(--negro);
     font-family: 'Ropa Sans', sans-serif;
     font-weight: bolder;
-    word-wrap: break-word;
+    word-wrap: normal;
 }
 
 .link img {
@@ -304,6 +304,7 @@ h6 {
     z-index: 2;
     width: 100%;
     backdrop-filter: blur(0.125rem);
+    background-color: #25252550;
 }
 
 #title {
@@ -329,9 +330,8 @@ h6 {
 #album {
     opacity: 1;
     position: absolute;
-    background-blend-mode: normal;
-    width: 200%;
-    left: -50%;
+    width: 150%;
+    left: -20%;
 }
 
 @keyframes spotify {
@@ -385,67 +385,39 @@ h1:hover {
 .hora h4 {
     font-size: 40px;
     font-style: italic;
+    opacity: 0.6;
 }
 
 .fecha {
     display: none;
 }
 
-
-/* Tooltip text */
-
-.tooltip {
-    background: linear-gradient(to right bottom, var(--deg2), var(--deg1));
-    width: 2.25rem;
-    height: 2.25rem;
-    display: flex;
-    justify-content: center;
-    padding-top: 0.5rem;
-    border-radius: 50%;
-    font-size: large;
-    font-weight: bolder;
+.comandos {
+    left: 0;
+    position: absolute;
+    top: -1rem;
+    display: grid;
+    grid-template-rows: 8rem 8rem 8rem;
+    grid-template-columns: 14rem 14rem 14rem;
     opacity: 0.6;
 }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 20rem;
-    display: flex;
+.com {
+    width: 90%;
+    height: 90%;
+    margin-top: 2rem;
+    margin-right: 2rem;
     background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
     border-radius: 1rem;
+    padding: 1rem;
     box-shadow: 6px 6px 20px var(--sombra);
-    top: 12rem;
-    right: 2rem;
-    padding: 1.5rem;
-    position: absolute;
-    z-index: 5;
-    backdrop-filter: blur(5rem);
-    background: rgba(255, 255, 255, 1);
+    display: block;
 }
 
-.tooltiptext ul {
+.com li {
+    font-style: italic;
     list-style: none;
-}
-
-.tooltiptext ul li {
-    font-style: italic;
-    margin-bottom: 0.5rem;
-    opacity: 0.6;
-}
-
-.tooltiptext ul li:first-child {
-    font-style: italic;
-    text-align: center;
-    opacity: 0.8;
-    margin-bottom: 1rem;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-.tooltip:hover {
-    cursor: help;
+    margin-top: 2px;
 }
 
 .status {
@@ -453,7 +425,7 @@ h1:hover {
     left: 0;
     width: 80%;
     height: 4rem;
-    bottom: 0;
+    bottom: -3rem;
     display: flex;
     justify-content: start;
     max-width: 100%;
@@ -464,6 +436,8 @@ h1:hover {
     border-radius: 1rem;
     overflow: hidden;
     align-items: center;
+    opacity: 0.8;
+    border-top: 1px solid #25252520;
 }
 
 #status {
@@ -491,10 +465,10 @@ input:focus {
 .respuesta {
     position: absolute;
     left: 0;
-    bottom: 14rem;
+    bottom: 9rem;
     max-width: 92%;
     margin-right: 2rem;
-    opacity: 0.6;
+    opacity: 0.8;
     display: flex;
     justify-content: left;
     vertical-align: middle;
@@ -508,12 +482,6 @@ input:focus {
     margin-left: 3rem;
     font-size: 25px;
     font-style: italic;
-}
-
-.respuesta img {
-    max-width: 5rem;
-    position: absolute;
-    left: 0;
 }
 
 #svg-pipo {
@@ -537,7 +505,6 @@ input:focus {
 
 .pregunta {
     position: absolute;
-    opacity: 0.6;
     display: flex;
     justify-content: left;
     vertical-align: middle;
@@ -545,7 +512,7 @@ input:focus {
     padding: 2rem;
     max-width: 85%;
     right: 0px;
-    bottom: 5rem;
+    bottom: 1rem;
     max-width: 92%;
     opacity: 0.6;
     background-color: var(--gris2);
@@ -593,7 +560,7 @@ input:focus {
     justify-content: center;
     vertical-align: middle;
     cursor: pointer;
-    bottom: -1.5rem;
+    bottom: -4.5rem;
     right: 0;
     padding: 0;
     opacity: 0.6;
@@ -605,4 +572,149 @@ input:focus {
 
 .hide {
     display: none;
+}
+
+
+/*ACORDION*/
+
+@import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
+* {
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.acordeon {
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    margin: 0 auto;
+    padding: 0rem;
+    width: 100%;
+    z-index: 99;
+    max-height: 19rem;
+    opacity: 0.8;
+}
+
+.accordion {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.accordion .accordion-item {
+    border-bottom: 1px solid #25252520;
+    width: 100%;
+    padding: 1rem;
+}
+
+.accordion .accordion-item:first-child {
+    border-bottom: 1px solid #25252520;
+    width: 100%;
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.accordion .accordion-item button[aria-expanded=true] {
+    border-bottom: 1px solid var(--azul);
+}
+
+.accordion button {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #25252580;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.accordion button:hover,
+.accordion button:focus {
+    cursor: pointer;
+    color: var(--azul);
+}
+
+.accordion button:hover::after,
+.accordion button:focus::after {
+    cursor: pointer;
+    color: var(--azul);
+    border: 1px solid var(--azul);
+}
+
+.accordion button .accordion-title {
+    padding: 1em 1.5em 1em 0;
+}
+
+.accordion button .icon {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 22px;
+}
+
+.accordion button .icon::before {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+}
+
+.accordion button .icon::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+
+.accordion button[aria-expanded=true] {
+    color: var(--azul);
+}
+
+.accordion button[aria-expanded=true] .icon::after {
+    width: 0;
+}
+
+.accordion button[aria-expanded=true]+.accordion-content {
+    opacity: 1;
+    max-height: 9em;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+}
+
+.accordion .accordion-content {
+    margin-top: 1rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+    width: 100%;
+}
+
+.accordion .accordion-content li {
+    list-style: none;
+    padding-top: 0.5rem;
+    font-style: italic;
+    opacity: 0.8;
+    cursor: default;
+    pointer-events: none;
 }
