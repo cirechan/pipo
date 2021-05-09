@@ -124,19 +124,19 @@ function mueveReloj() {
     weekday[5] = "Viernes";
     weekday[6] = "Sábado";
 
-    const day = document.getElementById('day');
+    //  const day = document.getElementById('day');
     const time = document.getElementById('hora');
-    const date = document.getElementById('fecha');
+    //  const date = document.getElementById('fecha');
 
     var today = new Date();
     const hora = addZero(today.getHours()) + " : " + addZero(today.getMinutes());
-    const fecha = addZero(today.getDate()) + "/" + addZero((today.getMonth() + 1)) + "/" + addZero(today.getFullYear());
-    const diaSemana = weekday[today.getDay()];;
+    //   const fecha = addZero(today.getDate()) + "/" + addZero((today.getMonth() + 1)) + "/" + addZero(today.getFullYear());
+    //   const diaSemana = weekday[today.getDay()];;
 
 
     time.textContent = hora;
-    date.textContent = fecha;
-    day.textContent = diaSemana;
+    // date.textContent = fecha;
+    // day.textContent = diaSemana;
 
 
     setTimeout("mueveReloj()", 1000)
