@@ -248,7 +248,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         if (condition.toLowerCase().includes("despejado") || condition.toLowerCase().includes("nublado")) {
             condicion = "está " + condition;
         } else {
-            condicion = "hay " + condition;
+            condicion = " " + condition;
         }
 
 
