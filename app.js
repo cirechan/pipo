@@ -296,7 +296,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         respuesta.textContent = "Son las: " + hora;
 
     }
-    if (message.toLowerCase().includes("Hola")) {
+    if (message.toLowerCase().includes("hola")) {
         const finalText = hola[Math.floor(Math.random() * hola.length)];
         speech.text = finalText;
         respuesta.textContent = finalText;
