@@ -18,7 +18,7 @@ $(document).ready(function() {
         $.get(baseURL, function(res) {
             let data = res.current;
             let temp = Math.floor(data.temp - 273);
-            let condition = data.weather[0].description;
+            let condition = data.weather[0].main;
             let locationIcon = document.querySelector('.weather-icon');
             const { icon } = data.weather[0];
             locationIcon.innerHTML = `<img src = 'icons/${icon}.png' >`;
@@ -26,34 +26,34 @@ $(document).ready(function() {
 
             const condicion = [
                 "despejado",
-                "pocas nubes",
-                "nubes dispersas",
                 "nublado",
-                "chubascos",
                 "lluvia",
-                "lluvia ligera",
-                "tormenta",
                 "nieve",
+                "llovizna",
+                "tormenta",
+                "neblina",
+                "polvo en suspensión",
+                "tornados",
                 "niebla"
             ];
             const translate = [
-                "clear sky",
-                "few clouds",
-                "scattered clouds",
-                "broken clouds",
-                "shower rain",
-                "rain",
-                "light rain",
-                "thunderstorm",
-                "snow",
-                "mist"
+                "Clear",
+                "Clouds",
+                "Rain",
+                "Snow",
+                "Drizzle",
+                "Thunderstorm",
+                "Mist",
+                "Dust",
+                "Tornado",
+                "Fog"
             ];
 
             var index = 0;
 
             translate.forEach(cond => {
 
-                if (condition == cond) {
+                if (condition === cond) {
 
                     index = translate.indexOf(cond);
                     console.log(index);
