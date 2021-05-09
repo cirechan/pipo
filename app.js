@@ -14,7 +14,7 @@ const datas = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const cosas = ["Pedro de la Rosa mantiene todavía la vuelta rápida en carrera de la Fórmula 1 en el circuito de Bahréin", "El cometa Halley, es un cometa grande y brillante que orbita alrededor del Sol cada 75 años en promedio", "Los elefantes son capaces de localizar agua y de detectar lluvias a distancias de aproximadamente 250 km", " Las jirafas no emiten sonido alguno convirtiéndose de esta manera en el único mamífero con esta característica", "Se necesitan 200 litros de agua para producir un solo litro de gaseosa "];
 const estado = ["Lista pa la guerra ya tu sabe", "Podría estar jugando al LoL", "Podría estar jugando al Ruina", "Chilling", "Le acabo de desear a mi jungla que se tire de un cuarto piso", "Aquí en el gymnasio"];
 const comandoError = ["Eso no era un comando que yo conozca, prueba de nuevo", "No te he entendido, vuelve a intentarlo"];
-const comandoError = ["Hola", "Hello", "Ciao", "Bon día"];
+const hola = ["Hola", "Hello", "Ciao", "Bon día"];
 
 
 //Lottie animations
