@@ -41,7 +41,7 @@ $(document).ready(function() {
                 "scattered clouds",
                 "broken clouds",
                 "shower rain",
-                "rain",
+                "Rain",
                 "thunderstorm",
                 "snow",
                 "mist"
