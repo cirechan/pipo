@@ -31,6 +31,7 @@ $(document).ready(function() {
                 "nublado",
                 "chubascos",
                 "lluvia",
+                "lluvia ligera",
                 "tormenta",
                 "nieve",
                 "niebla"
@@ -41,7 +42,8 @@ $(document).ready(function() {
                 "scattered clouds",
                 "broken clouds",
                 "shower rain",
-                "Rain",
+                "rain",
+                "light rain",
                 "thunderstorm",
                 "snow",
                 "mist"
