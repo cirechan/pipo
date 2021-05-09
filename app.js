@@ -14,6 +14,7 @@ const datas = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const cosas = ["Pedro de la Rosa mantiene todavía la vuelta rápida en carrera de la Fórmula 1 en el circuito de Bahréin", "El cometa Halley, es un cometa grande y brillante que orbita alrededor del Sol cada 75 años en promedio", "Los elefantes son capaces de localizar agua y de detectar lluvias a distancias de aproximadamente 250 km", " Las jirafas no emiten sonido alguno convirtiéndose de esta manera en el único mamífero con esta característica", "Se necesitan 200 litros de agua para producir un solo litro de gaseosa "];
 const estado = ["Lista pa la guerra ya tu sabe", "Podría estar jugando al LoL", "Podría estar jugando al Ruina", "Chilling", "Le acabo de desear a mi jungla que se tire de un cuarto piso", "Aquí en el gymnasio"];
 const comandoError = ["Eso no era un comando que yo conozca, prueba de nuevo", "No te he entendido, vuelve a intentarlo"];
+const comandoError = ["Hola", "Hello", "Ciao", "Bon día"];
 
 
 //Lottie animations
@@ -276,7 +277,11 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         const finalText = "Soy PIPO, tu asistente virtual";
         speech.text = finalText;
         respuesta.textContent = finalText;
-
+    }
+    if (message.toLowerCase().includes("qué pasa")) {
+        const finalText = "Un gato por tu casa";
+        speech.text = finalText;
+        respuesta.textContent = finalText;
     }
     if (message.toLowerCase().includes("hora")) {
         var today = new Date();
@@ -290,6 +295,11 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         speech.text = "Son las" + hora;
         respuesta.textContent = "Son las: " + hora;
 
+    }
+    if (message.toLowerCase().includes("Hola")) {
+        const finalText = hola[Math.floor(Math.random() * hola.length)];
+        speech.text = finalText;
+        respuesta.textContent = finalText;
     }
     if (message.toLowerCase().includes("adiós")) {
         const finalText = "Que vaya bien, hasta luego";
@@ -351,7 +361,7 @@ function playSpotify() { //Función para reproductor de Spotify
             name: 'PIPO',
             volume: 0.4,
             getOAuthToken: cb => {
-                cb("BQDC5MsKtetWkjbU7K30Kr6kzAlHtgZqwF2zmFu0mc8ZVUu8-sgD4wOhWsc9NsalGBwCPiF48nmPMbS1HRd5lioeJDYO2NNzprSD6Mw3CYaeulHqo3kfaB_NtczkmlJpWomZljuag-zoUyejD2EUPnBfETtRm61WylzX");
+                cb("BQCzQOULDu4Enae70JJ1RStlgHshWNlGqiTPlXn6DNbmG43ycHmVa2wUcwr2iNi1nUW9LFRUwY2pIPHgYo40Hffz2k-OQfck7ZxpZQzt94G2TqTNoTzzH9kdRxXDwZqjvtfdfyARGZINmnD-qehIbAZpi_8FT3S_Iv5j");
             }
         });
 
