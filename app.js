@@ -347,6 +347,20 @@ function playYoutube(search) { //Función para reproducir video de YT
     });
 }
 
+
+// Get the hash of the url
+const hash = window.location.hash
+    .substring(1)
+    .split('&')
+    .reduce(function(initial, item) {
+        if (item) {
+            var parts = item.split('=');
+            initial[parts[0]] = decodeURIComponent(parts[1]);
+        }
+        return initial;
+    }, {});
+window.location.hash = '';
+
 function playSpotify() { //Función para reproductor de Spotify
 
     // Set token
