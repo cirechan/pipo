@@ -70,11 +70,11 @@ $(document).ready(function() {
 
     }
 
-    //  playSpotify();
+
     recuadroH();
     mueveReloj();
     getLocation();
-
+    prepSpotify();
 
 });
 
