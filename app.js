@@ -455,7 +455,6 @@ function playSpotify() { //Función para reproductor de Spotify
     window.onSpotifyPlayerAPIReady = () => {
         const player = new Spotify.Player({
             name: 'PIPO',
-            volume: 0.3,
             getOAuthToken: cb => { cb(_token); }
         });
 
