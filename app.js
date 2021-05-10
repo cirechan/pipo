@@ -230,6 +230,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         speech.text = finalText;
         respuesta.textContent = finalText;
         recuadroH();
+        player.pause();
         player.disconnect();
         player = null;
     }
@@ -402,8 +403,6 @@ function playSpotify() { //Función para reproductor de Spotify
 
 
             player.addListener('player_state_changed', ({
-                position,
-                duration,
                 track_window: { current_track }
             }) => {
                 console.log('Currently Playing', current_track);
