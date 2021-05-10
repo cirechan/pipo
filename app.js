@@ -218,6 +218,21 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         speech.text = finalText;
         respuesta.textContent = finalText;
 
+        // Get the hash of the url
+        const hash = window.location.hash
+            .substring(1)
+            .split('&')
+            .reduce(function(initial, item) {
+                if (item) {
+                    var parts = item.split('=');
+                    initial[parts[0]] = decodeURIComponent(parts[1]);
+                }
+                return initial;
+            }, {});
+        window.location.hash = '';
+        _token = hash.access_token;
+        console.log(_token);
+
         playSpotify();
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
@@ -348,27 +363,13 @@ function playYoutube(search) { //Función para reproducir video de YT
 }
 
 
-// Get the hash of the url
-const hash = window.location.hash
-    .substring(1)
-    .split('&')
-    .reduce(function(initial, item) {
-        if (item) {
-            var parts = item.split('=');
-            initial[parts[0]] = decodeURIComponent(parts[1]);
-        }
-        return initial;
-    }, {});
-window.location.hash = '';
-let _token = hash.access_token;
-console.log(_token);
-
+/*
 
 function prepSpotify() {
     window.onSpotifyPlayerAPIReady = () => {
         const player = new Spotify.Player({
             name: 'PIPO',
-            getOAuthToken: cb => { cb("empty"); }
+            getOAuthToken: cb => { cb(_to); }
         });
 
         // Error handling
@@ -411,7 +412,9 @@ function prepSpotify() {
         player.connect();
     }
 }
+*/
 
+let _token = null;
 
 function playSpotify() { //Función para reproductor de Spotify
 
