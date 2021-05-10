@@ -346,10 +346,27 @@ function playYoutube(search) { //Función para reproducir video de YT
 
     });
 }
-/*
+
 function playSpotify() { //Función para reproductor de Spotify
 
+    // Set token
+    let _token = hash.access_token;
 
+    const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+    // Replace with your app's client ID, redirect URI and desired scopes
+    const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
+    const redirectUri = 'https://pipo-asistente.netlify.app/';
+    const scopes = [
+        'streaming',
+        'user-read-private',
+        'user-modify-playback-state'
+    ];
+
+    // If there is no token, redirect to Spotify authorization
+    if (!_token) {
+        window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+    }
 
     window.onSpotifyWebPlaybackSDKReady = () => {
 
@@ -359,7 +376,7 @@ function playSpotify() { //Función para reproductor de Spotify
             name: 'PIPO',
             volume: 0.4,
             getOAuthToken: cb => {
-                cb("BQC_gdmyKQbXSnE1o_NuSPuuba-PXaJmjJtAuo8KKepnnUf581uCzrO7dmfajeuA-rIfGmkxwiX7WwMcVZ6hzXHg8uLBLHs28VfEKPZM8_VlpFshWmrTCr1205f50hmH7azj-_gWfCDSgXaay6xsAtecBm9x_fGiB9XT");
+                cb(_token);
             }
         });
 
@@ -423,7 +440,7 @@ function playSpotify() { //Función para reproductor de Spotify
     };
 
 }
-*/
+
 function recuadroV() {
     const recuadro = document.getElementById('spotify');
 
@@ -436,87 +453,3 @@ function recuadroH() {
     recuadro.style.display = "none";
 
 }
-
-// Get the hash of the url
-const hash = window.location.hash
-    .substring(1)
-    .split('&')
-    .reduce(function(initial, item) {
-        if (item) {
-            var parts = item.split('=');
-            initial[parts[0]] = decodeURIComponent(parts[1]);
-        }
-        return initial;
-    }, {});
-window.location.hash = '';
-
-function playSpotify() {
-    // Set token
-    let _token = hash.access_token;
-
-    const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-    // Replace with your app's client ID, redirect URI and desired scopes
-    const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
-    const redirectUri = 'https://pipo-asistente.netlify.app/';
-    const scopes = [
-        'streaming',
-        'user-read-private',
-        'user-modify-playback-state'
-    ];
-
-    // If there is no token, redirect to Spotify authorization
-    if (!_token) {
-        window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-    }
-
-    // Set up the Web Playback SDK
-
-    window.onSpotifyPlayerAPIReady = () => {
-        const player = new Spotify.Player({
-            name: 'Web Playback SDK Template',
-            getOAuthToken: cb => { cb(_token); }
-        });
-
-        // Error handling
-        player.on('initialization_error', e => console.error(e));
-        player.on('authentication_error', e => console.error(e));
-        player.on('account_error', e => console.error(e));
-        player.on('playback_error', e => console.error(e));
-
-        // Playback status updates
-        player.on('player_state_changed', state => {
-            console.log(state)
-            $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
-            $('#current-track-name').text(state.track_window.current_track.name);
-        });
-
-        // Ready
-        player.on('ready', data => {
-            console.log('Ready with Device ID', data.device_id);
-
-            // Play a track using our new device ID
-            play(data.device_id);
-        });
-
-        // Connect to the player!
-        player.connect();
-    }
-}
-/*
-function loginSpotify() {
-
-
-    const clientSecret = '056eb89f303a4fc8b4e60245b34d2a82';
-    app.get('/login', function(req, res) {
-        const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
-        var scopes = 'user-read-private user-read-email';
-        res.redirect('https://accounts.spotify.com/authorize' +
-            '?response_type=code' +
-            '&client_id=' + clientId +
-            (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-            '&redirect_uri=' + encodeURIComponent(redirect_uri));
-    });
-}
-
-*/
