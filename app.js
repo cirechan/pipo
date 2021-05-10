@@ -229,7 +229,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
         respuesta.textContent = finalText;
-        playSpotify();
+        recuadroH();
     }
     if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
         const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
