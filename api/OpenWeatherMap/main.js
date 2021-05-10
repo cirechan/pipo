@@ -75,7 +75,6 @@ $(document).ready(function() {
     mueveReloj();
     getLocation();
     //  prepSpotify();
-    playSpotify();
 
 });
 
