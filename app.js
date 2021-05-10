@@ -360,11 +360,12 @@ const hash = window.location.hash
         return initial;
     }, {});
 window.location.hash = '';
+let _token = hash.access_token;
 
 function playSpotify() { //Función para reproductor de Spotify
 
     // Set token
-    let _token = hash.access_token;
+
 
     const authEndpoint = 'https://accounts.spotify.com/authorize';
 
@@ -453,7 +454,8 @@ function playSpotify() { //Función para reproductor de Spotify
 
     window.onSpotifyPlayerAPIReady = () => {
         const player = new Spotify.Player({
-            name: 'Web Playback SDK Template',
+            name: 'PIPO',
+            volume: 0.3,
             getOAuthToken: cb => { cb(_token); }
         });
 
@@ -466,23 +468,38 @@ function playSpotify() { //Función para reproductor de Spotify
         // Playback status updates
         player.on('player_state_changed', state => {
             console.log(state)
-            $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
-            $('#current-track-name').text(state.track_window.current_track.name);
+            var artistas = "";
+            var fotoAlbum = "";
+            current_track.artists.forEach(element => {
+                artistas += element.name + ", ";
+            });
+            current_track.album.images.forEach(element => {
+
+                fotoAlbum = element.url;
+            });
+            title.textContent = current_track.name;
+            artist.textContent = artistas.slice(0, -2);
+            album.src = fotoAlbum;
+            album.style.height = "100%";
+            album.style.opacity = "0.3";
+            album.style.objectFit = "cover";
+            album.style.borderRadius = "2rem";
+
+            recuadroV();
         });
 
         // Ready
         player.on('ready', data => {
             console.log('Ready with Device ID', data.device_id);
 
-            // Play a track using our new device ID
-            play(data.device_id);
+
         });
 
         // Connect to the player!
         player.connect();
     }
 }
-
+/*
 // Play a specified track on the Web Playback SDK's device ID
 function play(device_id) {
     $.ajax({
@@ -494,7 +511,7 @@ function play(device_id) {
             console.log(data)
         }
     });
-}
+}*/
 
 
 
