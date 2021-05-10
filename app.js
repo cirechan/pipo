@@ -363,99 +363,12 @@ window.location.hash = '';
 let _token = hash.access_token;
 console.log(_token);
 
-function playSpotify() { //Función para reproductor de Spotify
 
-    // Set token
-
-
-    const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-    // Replace with your app's client ID, redirect URI and desired scopes
-    const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
-    const redirectUri = 'https://pipo-asistente.netlify.app/';
-    const scopes = [
-        'streaming',
-        'user-read-private',
-        'user-modify-playback-state'
-    ];
-
-    // If there is no token, redirect to Spotify authorization
-    if (!_token) {
-        window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-    }
-
-    /*
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const player = new Spotify.Player({
-                name: 'PIPO',
-                getOAuthToken: cb => { cb(_token); }
-            });
-
-
-
-            const title = document.getElementById('title');
-            const artist = document.getElementById('artist');
-            const album = document.getElementById('album');
-
-
-            player.addListener('player_state_changed', ({
-                position,
-                duration,
-                track_window: { current_track }
-            }) => {
-                console.log('Currently Playing', current_track);
-
-                var artistas = "";
-                var fotoAlbum = "";
-                current_track.artists.forEach(element => {
-                    artistas += element.name + ", ";
-                });
-                current_track.album.images.forEach(element => {
-
-                    fotoAlbum = element.url;
-                });
-                title.textContent = current_track.name;
-                artist.textContent = artistas.slice(0, -2);
-                album.src = fotoAlbum;
-                album.style.height = "100%";
-                //album.style.width = "6rem";
-                album.style.opacity = "0.3";
-                album.style.objectFit = "cover";
-                album.style.borderRadius = "2rem";
-
-                recuadroV();
-
-            });
-
-            // Ready
-            player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
-            });
-
-            // Not Ready
-            player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
-            });
-
-            // Error handling
-            player.addListener('initialization_error', ({ message }) => { console.error(message); });
-            player.addListener('authentication_error', ({ message }) => { console.error(message); });
-            player.addListener('account_error', ({ message }) => { console.error(message); });
-            player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-
-            // Connect to the player!
-            player.connect();
-        };
-    */
-
-
-    // Set up the Web Playback SDK
-
+function prepSpotify() {
     window.onSpotifyPlayerAPIReady = () => {
         const player = new Spotify.Player({
             name: 'PIPO',
-            getOAuthToken: cb => { cb(_token); }
+            getOAuthToken: cb => { cb("empty"); }
         });
 
         // Error handling
@@ -497,6 +410,99 @@ function playSpotify() { //Función para reproductor de Spotify
         // Connect to the player!
         player.connect();
     }
+}
+
+
+function playSpotify() { //Función para reproductor de Spotify
+
+    // Set token
+
+
+    const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+    // Replace with your app's client ID, redirect URI and desired scopes
+    const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
+    const redirectUri = 'https://pipo-asistente.netlify.app/';
+    const scopes = [
+        'streaming',
+        'user-read-private',
+        'user-modify-playback-state'
+    ];
+
+    // If there is no token, redirect to Spotify authorization
+    if (!_token) {
+        window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+    }
+
+
+    window.onSpotifyWebPlaybackSDKReady = () => {
+        const player = new Spotify.Player({
+            name: 'PIPO',
+            getOAuthToken: cb => { cb(_token); }
+        });
+
+
+
+        const title = document.getElementById('title');
+        const artist = document.getElementById('artist');
+        const album = document.getElementById('album');
+
+
+        player.addListener('player_state_changed', ({
+            position,
+            duration,
+            track_window: { current_track }
+        }) => {
+            console.log('Currently Playing', current_track);
+
+            var artistas = "";
+            var fotoAlbum = "";
+            current_track.artists.forEach(element => {
+                artistas += element.name + ", ";
+            });
+            current_track.album.images.forEach(element => {
+
+                fotoAlbum = element.url;
+            });
+            title.textContent = current_track.name;
+            artist.textContent = artistas.slice(0, -2);
+            album.src = fotoAlbum;
+            album.style.height = "100%";
+            //album.style.width = "6rem";
+            album.style.opacity = "0.3";
+            album.style.objectFit = "cover";
+            album.style.borderRadius = "2rem";
+
+            recuadroV();
+
+        });
+
+        // Ready
+        player.addListener('ready', ({ device_id }) => {
+            console.log('Ready with Device ID', device_id);
+        });
+
+        // Not Ready
+        player.addListener('not_ready', ({ device_id }) => {
+            console.log('Device ID has gone offline', device_id);
+        });
+
+        // Error handling
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+
+        // Connect to the player!
+        player.connect();
+    };
+
+
+
+    // Set up the Web Playback SDK
+
+
 }
 /*
 // Play a specified track on the Web Playback SDK's device ID
