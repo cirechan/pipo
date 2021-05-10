@@ -382,17 +382,14 @@ function playSpotify() { //Función para reproductor de Spotify
         window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
     }
 
+
     window.onSpotifyPlayerAPIReady = () => {
-
-
-
         const player = new Spotify.Player({
             name: 'PIPO',
-            volume: 0.4,
-            getOAuthToken: cb => {
-                cb(_token);
-            }
+            volume: 0.3,
+            getOAuthToken: cb => { cb(_token); }
         });
+
 
 
         const title = document.getElementById('title');
