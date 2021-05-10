@@ -382,7 +382,7 @@ const scopes = [
     'user-modify-playback-state'
 ];
 
-const player = null;
+let player = null;
 
 function playSpotify() { //Función para reproductor de Spotify
 
