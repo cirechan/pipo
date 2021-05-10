@@ -104,8 +104,8 @@
                             <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Google</span><span class="icon" aria-hidden="true"></span></button>
                             <div class="accordion-content">
                                 <li>Busca en Google...</li>
-                                <li>Qué es...</li>
-                                <li>Quién es...</li>
+                                <li>Qué es...?</li>
+                                <li>Quién es...?</li>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -139,7 +139,7 @@
                                 <li>Qué tal?</li>
                                 <li>Cómo estás?</li>
                                 <li>Qué pasa?</li>
-                                <li>Adiós?</li>
+                                <li>Adiós</li>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -154,9 +154,31 @@
 
                 <div class="status">
                     <h1 id="status">
-                        <input type="text" name="" id="comando" placeholder="Escribe o dí algo">
+                        <input list="comandos" type="text" name="" id="comando" placeholder="Escribe o dí algo">
                     </h1>
+                    <datalist id="comandos">
+                        <option value="BUSCA EN GOOGLE"></option>
+                        <option value="QUÉ ES"></option>
+                        <option value="QUIÉN ES"></option>
+                        <option value="BUSCA EN YOUTUBE"></option>
+                        <option value="PON EN YOUTUBE"></option>
+                        <option value="BUSCA EN SPOTIFY"></option>
+                        <option value="ACTIVA SPOTIFY"></option>
+                        <option value="DESACTIVA SPOTIFY"></option>
+                        <option value="QUÉ HORA ES?"></option>
+                        <option value="QUÉ TIEMPO HACE?"></option>
+                        <option value="QUÉ DÍA ES?"></option>
+                        <option value="QUÉ DÍA ES HOY?"></option>
+                        <option value="HOLA"></option>
+                        <option value="QUÉ TAL?"></option>
+                        <option value="CÓMO ESTÁS?"></option>
+                        <option value="QUÉ PASA?"></option>
+                        <option value="ADIOS?"></option>
+                        <option value="CUÉNTAME ALGO?"></option>
+                        <option value="CUÉNTAME COSAS?"></option>
 
+
+                    </datalist>
 
                 </div>
                 <div class="svg" id="micro"></div>
