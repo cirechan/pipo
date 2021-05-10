@@ -223,13 +223,14 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
             window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
         }
 
-        playSpotify(_token);
+        playSpotify();
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
         respuesta.textContent = finalText;
         recuadroH();
+        player.disconnect();
     }
     if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
         const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
@@ -353,58 +354,6 @@ function playYoutube(search) { //Función para reproducir video de YT
 }
 
 
-/*
-
-function prepSpotify(token) {
-    window.onSpotifyPlayerAPIReady = () => {
-        const player = new Spotify.Player({
-            name: 'PIPO',
-            getOAuthToken: cb => { cb(token); }
-        });
-
-        // Error handling
-        player.on('initialization_error', e => console.error(e));
-        player.on('authentication_error', e => console.error(e));
-        player.on('account_error', e => console.error(e));
-        player.on('playback_error', e => console.error(e));
-
-        // Playback status updates
-        player.on('player_state_changed', state => {
-            console.log(state)
-            var artistas = "";
-            var fotoAlbum = "";
-            current_track.artists.forEach(element => {
-                artistas += element.name + ", ";
-            });
-            current_track.album.images.forEach(element => {
-
-                fotoAlbum = element.url;
-            });
-            title.textContent = current_track.name;
-            artist.textContent = artistas.slice(0, -2);
-            album.src = fotoAlbum;
-            album.style.height = "100%";
-            album.style.opacity = "0.3";
-            album.style.objectFit = "cover";
-            album.style.borderRadius = "2rem";
-
-            recuadroV();
-        });
-
-        // Ready
-        player.on('ready', data => {
-            console.log('Ready with Device ID', data.device_id);
-
-
-        });
-
-        // Connect to the player!
-        player.connect();
-    }
-}
-
-*/
-
 
 // Get the hash of the url
 const hash = window.location.hash
@@ -433,10 +382,12 @@ const scopes = [
     'user-modify-playback-state'
 ];
 
+const player = null;
+
 function playSpotify() { //Función para reproductor de Spotify
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-        const player = new Spotify.Player({
+        player = new Spotify.Player({
             name: 'PIPO',
             getOAuthToken: cb => { cb(_token); }
         });
@@ -495,6 +446,7 @@ function playSpotify() { //Función para reproductor de Spotify
 
         // Connect to the player!
         player.connect();
+
     };
 
 
