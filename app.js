@@ -218,6 +218,11 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         speech.text = finalText;
         respuesta.textContent = finalText;
 
+        // If there is no token, redirect to Spotify authorization
+        if (!_token) {
+            window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+        }
+
         playSpotify(_token);
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
@@ -428,19 +433,12 @@ const scopes = [
     'user-modify-playback-state'
 ];
 
-// If there is no token, redirect to Spotify authorization
-if (!_token) {
-    window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-}
-
-function playSpotify(token) { //Función para reproductor de Spotify
-
-
+function playSpotify() { //Función para reproductor de Spotify
 
     window.onSpotifyWebPlaybackSDKReady = () => {
         const player = new Spotify.Player({
             name: 'PIPO',
-            getOAuthToken: cb => { cb(token); }
+            getOAuthToken: cb => { cb(_token); }
         });
 
 
