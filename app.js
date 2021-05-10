@@ -222,7 +222,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         if (!_token) {
             window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
         }
-        recuadroV();
+
         playSpotify();
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
@@ -231,7 +231,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         respuesta.textContent = finalText;
 
         player.pause();
-        recuadroH();
+
     }
     if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
         const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
