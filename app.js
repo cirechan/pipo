@@ -233,6 +233,26 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         _token = hash.access_token;
         console.log(_token);
 
+        // Set token
+
+
+        const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+        // Replace with your app's client ID, redirect URI and desired scopes
+        const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
+        const redirectUri = 'https://pipo-asistente.netlify.app/';
+        const scopes = [
+            'streaming',
+            'user-read-private',
+            'user-modify-playback-state'
+        ];
+
+        // If there is no token, redirect to Spotify authorization
+        if (!_token) {
+            window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+        }
+
+
         playSpotify();
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
@@ -417,25 +437,6 @@ function prepSpotify() {
 let _token = null;
 
 function playSpotify() { //Función para reproductor de Spotify
-
-    // Set token
-
-
-    const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-    // Replace with your app's client ID, redirect URI and desired scopes
-    const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
-    const redirectUri = 'https://pipo-asistente.netlify.app/';
-    const scopes = [
-        'streaming',
-        'user-read-private',
-        'user-modify-playback-state'
-    ];
-
-    // If there is no token, redirect to Spotify authorization
-    if (!_token) {
-        window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-    }
 
 
     window.onSpotifyWebPlaybackSDKReady = () => {
