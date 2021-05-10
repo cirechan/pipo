@@ -397,54 +397,58 @@ function playSpotify() { //Función para reproductor de Spotify
         const artist = document.getElementById('artist');
         const album = document.getElementById('album');
 
+        if (player != null) {
 
-        player.addListener('player_state_changed', ({
-            track_window: { current_track }
-        }) => {
-            console.log('Currently Playing', current_track);
 
-            var artistas = "";
-            var fotoAlbum = "";
-            current_track.artists.forEach(element => {
-                artistas += element.name + ", ";
+            player.addListener('player_state_changed', ({
+                position,
+                duration,
+                track_window: { current_track }
+            }) => {
+                console.log('Currently Playing', current_track);
+
+                var artistas = "";
+                var fotoAlbum = "";
+                current_track.artists.forEach(element => {
+                    artistas += element.name + ", ";
+                });
+                current_track.album.images.forEach(element => {
+
+                    fotoAlbum = element.url;
+                });
+                title.textContent = current_track.name;
+                artist.textContent = artistas.slice(0, -2);
+                album.src = fotoAlbum;
+                album.style.height = "100%";
+                //album.style.width = "6rem";
+                album.style.opacity = "0.3";
+                album.style.objectFit = "cover";
+                album.style.borderRadius = "2rem";
+
+                recuadroV();
+
             });
-            current_track.album.images.forEach(element => {
 
-                fotoAlbum = element.url;
+            // Ready
+            player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
             });
-            title.textContent = current_track.name;
-            artist.textContent = artistas.slice(0, -2);
-            album.src = fotoAlbum;
-            album.style.height = "100%";
-            //album.style.width = "6rem";
-            album.style.opacity = "0.3";
-            album.style.objectFit = "cover";
-            album.style.borderRadius = "2rem";
 
-            recuadroV();
+            // Not Ready
+            player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
 
-        });
-
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-            console.log('Ready with Device ID', device_id);
-        });
-
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-            console.log('Device ID has gone offline', device_id);
-        });
-
-        // Error handling
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
-        player.addListener('authentication_error', ({ message }) => { console.error(message); });
-        player.addListener('account_error', ({ message }) => { console.error(message); });
-        player.addListener('playback_error', ({ message }) => { console.error(message); });
+            // Error handling
+            player.addListener('initialization_error', ({ message }) => { console.error(message); });
+            player.addListener('authentication_error', ({ message }) => { console.error(message); });
+            player.addListener('account_error', ({ message }) => { console.error(message); });
+            player.addListener('playback_error', ({ message }) => { console.error(message); });
 
 
-        // Connect to the player!
-        player.connect();
-
+            // Connect to the player!
+            player.connect();
+        }
     };
 
 
