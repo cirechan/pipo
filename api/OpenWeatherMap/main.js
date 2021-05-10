@@ -74,7 +74,8 @@ $(document).ready(function() {
     recuadroH();
     mueveReloj();
     getLocation();
-    prepSpotify();
+    //  prepSpotify();
+    playSpotify();
 
 });
 
