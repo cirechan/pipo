@@ -70,9 +70,7 @@ $(document).ready(function() {
 
     }
 
-    
-    
-    playSpotify();
+    //  playSpotify();
     recuadroH();
     mueveReloj();
     getLocation();
@@ -87,31 +85,6 @@ function addZero(i) {
     return i;
 }
 
-
-/*
-function getToken() {
-
-
-    const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
-    const clientSecret = '056eb89f303a4fc8b4e60245b34d2a82';
-
-
-    const _getToken = async() => {
-
-        const result = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-            },
-            body: 'grant_type=client_credentials'
-        });
-
-        const data = await result.json();
-        return data.access_token;
-    }
-    return _getToken().then(val => console.log(val));
-} */
 
 
 
