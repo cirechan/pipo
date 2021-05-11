@@ -438,7 +438,7 @@ function playSpotify() { //Función para reproductor de Spotify
                 album.style.objectFit = "cover";
                 album.style.borderRadius = "2rem";
 
-                spotifyAnimation.goToAndPlay(0, true);
+                spotifyAnimation.goToAndPlay(40, false);
                 recuadroV();
 
             });
