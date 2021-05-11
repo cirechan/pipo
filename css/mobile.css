@@ -31,11 +31,14 @@
 
 body {
     width: 100%;
+    height: 100%;
     border: 2px solid red;
     background: linear-gradient(to right top, var(--deg1), var(--deg2));
+    padding: 30px;
 }
 
 #loading {
+    padding: 10rem;
     width: 100%;
     height: 100%;
     top: 0;
@@ -51,15 +54,16 @@ body {
 }
 
 #loading h3 {
-    font-size: xx-large;
+    font-size: 6rem;
     text-transform: uppercase;
     font-family: 'Ropa Sans', sans-serif;
 }
 
 #loading-animation {
     z-index: 999;
+    width: 90%;
     position: absolute;
-    top: 5rem;
+    top: 45%;
     opacity: 0.6;
 }
 
@@ -68,7 +72,8 @@ body {
 }
 
 main {
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
     background: linear-gradient(to right top, var(--deg1), var(--deg2));
     display: flex;
     align-items: center;
@@ -79,7 +84,7 @@ main {
 .glass {
     background: var(--blanco);
     min-height: 80vh;
-    width: 70%;
+    width: 95%;
     background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
     border-radius: 2rem;
     z-index: 2;
@@ -89,7 +94,8 @@ main {
 
 .circle1,
 .circle2 {
-    background: var(--blanco);
+    display: none;
+    /* background: var(--blanco);
     background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
     height: 20rem;
     width: 20rem;
@@ -105,12 +111,12 @@ main {
 
 .circle2 {
     bottom: 2%;
-    left: 10%;
+    left: 10%; */
 }
 
 .dashboard {
-    flex: 1.25;
-    display: flex;
+    display: none;
+    /* flex: 1.25;
     flex-direction: column;
     align-items: center;
     vertical-align: middle;
@@ -342,7 +348,7 @@ h6 {
     to {
         opacity: 0.8;
         bottom: 0;
-    }
+    }*/
 }
 
 
