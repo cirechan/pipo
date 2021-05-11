@@ -224,7 +224,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         }
 
         playSpotify();
-        recuadroV();
+
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
@@ -432,6 +432,7 @@ function playSpotify() { //Función para reproductor de Spotify
             // Ready
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
+                recuadroV();
             });
 
             // Not Ready
