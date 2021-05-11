@@ -438,6 +438,7 @@ function playSpotify() { //Función para reproductor de Spotify
                 album.style.objectFit = "cover";
                 album.style.borderRadius = "2rem";
 
+                spotifyAnimation.goToAndPlay(0, true);
                 recuadroV();
 
             });
@@ -490,7 +491,6 @@ function play(device_id) {
 function recuadroV() {
     const recuadro = document.getElementById('spotify');
     recuadro.style.display = "flex";
-    spotifyLottie();
 }
 
 
