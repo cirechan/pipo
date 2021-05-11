@@ -75,6 +75,7 @@ $(document).ready(function() {
     mueveReloj();
     getLocation();
     playSpotify();
+    spotifyLottie();
 
 });
 
