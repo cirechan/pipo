@@ -299,7 +299,7 @@ h6 {
     text-align: start;
     overflow: hidden;
     animation: spotify 0.5s ease-in-out;
-    animation-delay: 3s;
+    animation-delay: 2.5s;
 }
 
 #spot {
@@ -346,12 +346,10 @@ h6 {
 
 @keyframes spotify {
     from {
-        display: none;
         opacity: 0;
         bottom: -2rem;
     }
     to {
-        display: flex;
         opacity: 0.8;
         bottom: 0;
     }
