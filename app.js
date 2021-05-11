@@ -22,6 +22,7 @@ const svgContainer = document.getElementById('micro');
 const svgCpipo = document.getElementById('svg-pipo');
 const question = document.getElementById('question');
 const loading = document.getElementById('loading-animation');
+const spotifyAnim = document.getElementById('spot-animation');
 
 
 const micro1 = bodymovin.loadAnimation({
@@ -52,11 +53,23 @@ const animLoading = bodymovin.loadAnimation({
     autoplay: true,
     path: 'svg/loading.json'
 });
+const spotifyAnimation = bodymovin.loadAnimation({
+    wrapper: spotifyAnim,
+    animType: 'svg',
+    loop: false,
+    autoplay: true,
+    path: 'svg/spotify.json'
+});
 
 
 function loadingAnimation() {
     animLoading.setDirection(1);
     animLoading.goToAndPlay(0, true);
+}
+
+function spotifyLottie() {
+    spotifyAnimation.setDirection(1);
+    spotifyAnimation.goToAndPlay(0, true);
 }
 
 
@@ -476,8 +489,8 @@ function play(device_id) {
 
 function recuadroV() {
     const recuadro = document.getElementById('spotify');
-
     recuadro.style.display = "flex";
+    spotifyLottie();
 }
 
 
