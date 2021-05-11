@@ -337,9 +337,9 @@ h6 {
 
 #spot-animation {
     position: absolute;
-    right: 1.5rem;
-    top: 2.5rem;
-    width: 3rem;
+    right: 0rem;
+    top: 4rem;
+    width: 4rem;
 }
 
 @keyframes spotify {
