@@ -56,7 +56,7 @@ const animLoading = bodymovin.loadAnimation({
 const spotifyAnimation = bodymovin.loadAnimation({
     wrapper: spotifyAnim,
     animType: 'svg',
-    loop: false,
+    loop: true,
     autoplay: true,
     path: 'svg/spotify.json'
 });
