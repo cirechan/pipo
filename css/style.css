@@ -281,6 +281,7 @@ h6 {
 }
 
 #spotify {
+    display: none;
     position: relative;
     width: 100%;
     display: flex;
@@ -345,10 +346,12 @@ h6 {
 
 @keyframes spotify {
     from {
+        display: none;
         opacity: 0;
         bottom: -2rem;
     }
     to {
+        display: flex;
         opacity: 0.8;
         bottom: 0;
     }
