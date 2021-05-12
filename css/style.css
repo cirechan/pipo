@@ -290,8 +290,7 @@ h6 {
     vertical-align: middle;
     text-align: start;
     overflow: hidden;
-    animation: spotify 0.5s ease-in-out;
-    animation-delay: 1.5s;
+    animation: spotify 1s ease-in-out;
 }
 
 #spot {
