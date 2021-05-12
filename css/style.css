@@ -115,7 +115,7 @@ main {
     flex-direction: column;
     align-items: center;
     vertical-align: middle;
-    justify-content: space-around;
+    justify-content: center;
     text-align: center;
     background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
     border-radius: 2rem;
@@ -127,46 +127,38 @@ main {
 }
 
 .user .logo {
-    height: 9rem;
-    width: 9rem;
-    border-radius: 50%;
+    height: 8rem;
+    width: 8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100%;
     z-index: 4;
+    border-radius: 50%;
     overflow: hidden;
-    margin: 0.5rem;
     opacity: 0.95;
 }
 
 .user h3 {
     font-size: 30px;
-    font-family: 'Oxygen', sans-serif;
 }
 
 .user .logo img {
     max-width: 110%;
-    max-height: 110;
+    max-height: 110%;
     z-index: 4;
-    object-fit: fill;
-    border: 1px solid var(--negro);
 }
 
 .links {
-    margin-top: -1rem;
-    max-width: 80%;
+    max-width: 85%;
     padding: 0;
 }
 
 .link {
     position: relative;
-    width: 100%;
+    width: 90%;
     display: flex;
-    margin: 0.5rem auto;
-    padding: 1rem 3rem;
+    padding: 1.5rem 3rem;
     align-items: center;
-    overflow: hidden;
     justify-content: end;
     border-radius: 1rem;
     z-index: 3;
@@ -187,7 +179,7 @@ main {
 }
 
 .buscar {
-    height: 75px;
+    height: 5rem;
     width: 100%;
     border-radius: 0px 25px 25px 0px;
     display: flex;
@@ -435,7 +427,7 @@ h1:hover {
     height: 4rem;
     width: 100%;
     left: 0;
-    bottom: 0;
+    bottom: -2rem;
 }
 
 .status {
@@ -458,6 +450,7 @@ h1:hover {
     font-weight: 400;
     opacity: 0.6;
     width: 95%;
+    margin-top: 0.25rem;
 }
 
 #comando {
@@ -496,7 +489,7 @@ input:focus {
 .respuesta {
     position: absolute;
     left: 0;
-    bottom: 12rem;
+    bottom: 10rem;
     max-width: 92%;
     margin-right: 2rem;
     opacity: 0.8;
@@ -543,7 +536,7 @@ input:focus {
     padding: 2rem;
     max-width: 85%;
     right: 0px;
-    bottom: 4rem;
+    bottom: 2rem;
     max-width: 92%;
     opacity: 0.6;
     background-color: var(--gris2);
@@ -592,13 +585,12 @@ input:focus {
 /*ACORDION*/
 
 .acordeon {
-    display: none;
     position: absolute;
-    top: -0.5rem;
+    top: -0.75em;
     left: 0;
     margin: 0 auto;
     padding: 0rem;
-    width: 100%;
+    width: 95%;
     z-index: 99;
     max-height: 19rem;
     opacity: 0.8;
@@ -606,10 +598,12 @@ input:focus {
 
 .acordeon h2 {
     font-style: italic;
+    font-size: 2.5rem;
 }
 
 .accordion {
     display: inline-flex;
+    margin-top: 0.5rem;
     justify-content: space-between;
 }
 
@@ -662,11 +656,12 @@ input:focus {
 }
 
 .accordion button .icon {
-    display: inline-block;
+    display: flex;
     position: absolute;
-    top: 18px;
-    right: 0;
+    float: right;
     width: 22px;
+    top: 1rem;
+    right: 0.75rem;
     height: 22px;
     border: 1px solid;
     border-radius: 22px;
@@ -720,8 +715,10 @@ input:focus {
 }
 
 .accordion .accordion-content li {
-    list-style: none;
-    padding-top: 0.5rem;
+    text-align: left;
+    list-style: outside;
+    list-style: circle;
+    padding-top: 1rem;
     font-style: italic;
     opacity: 0.8;
     cursor: default;
