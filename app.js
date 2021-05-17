@@ -6,8 +6,6 @@ const contenedorPregunta = document.querySelector('.pregunta');
 const imagenes = document.querySelector('.imagenes');
 
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-var recognition = new SpeechRecognition();
 
 const afirmacion = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const datas = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
@@ -126,6 +124,10 @@ items.forEach(item => item.addEventListener('click', toggleAccordion));
 
 
 //Reconocimiento de voz
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+var recognition = new SpeechRecognition();
+
 var activo = 0; // botón activo 
 btn.addEventListener('click', () => {
 
@@ -433,11 +435,9 @@ function playSpotify() { //Función para reproductor de Spotify
                 artist.textContent = artistas.slice(0, -2);
                 album.src = fotoAlbum;
                 album.style.height = "100%";
-                //album.style.width = "6rem";
                 album.style.opacity = "0.3";
                 album.style.objectFit = "cover";
                 album.style.borderRadius = "2rem";
-
 
                 recuadroV();
 
@@ -467,24 +467,7 @@ function playSpotify() { //Función para reproductor de Spotify
     };
 
 
-
-    // Set up the Web Playback SDK
-
-
 }
-/*
-// Play a specified track on the Web Playback SDK's device ID
-function play(device_id) {
-    $.ajax({
-        url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
-        type: "PUT",
-        data: '{"uris": ["spotify:track:5ya2gsaIhTkAuWYEMB0nw5"]}',
-        beforeSend: function(xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
-        success: function(data) {
-            console.log(data)
-        }
-    });
-}*/
 
 
 
