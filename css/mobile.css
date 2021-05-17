@@ -84,11 +84,9 @@ main {
     align-content: center;
     justify-content: center;
     border-radius: 2rem;
-    border: orchid 2px solid;
 }
 
 .glass {
-    border: olive 3px solid;
     background: var(--blanco);
     background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
     border-radius: 2rem;
@@ -123,7 +121,8 @@ main {
 
 .dashboard {
     display: none;
-    /* flex: 1.25;
+    /*
+    flex: 1.25;
     flex-direction: column;
     align-items: center;
     vertical-align: middle;
@@ -355,7 +354,7 @@ h6 {
     to {
         opacity: 0.8;
         bottom: 0;
-    }*/
+    } */
 }
 
 
@@ -369,6 +368,14 @@ h6 {
     margin: 5rem;
     padding: 2rem;
     position: relative;
+}
+
+.barra-lateral img {
+    position: absolute;
+    top: -4rem;
+    left: -4rem;
+    width: 220px;
+    height: 220px;
 }
 
 .card {
@@ -478,7 +485,7 @@ input:focus {
 .respuesta {
     position: absolute;
     left: 0;
-    bottom: 9rem;
+    bottom: 17rem;
     max-width: 92%;
     margin-right: 2rem;
     opacity: 0.8;
@@ -493,7 +500,7 @@ input:focus {
 
 .respuesta h3 {
     margin-left: 3rem;
-    font-size: 25px;
+    font-size: 45px;
     font-style: italic;
 }
 
@@ -525,7 +532,7 @@ input:focus {
     padding: 2rem;
     max-width: 85%;
     right: 0px;
-    bottom: 1rem;
+    bottom: 7rem;
     max-width: 92%;
     opacity: 0.6;
     background-color: var(--gris2);
@@ -540,7 +547,7 @@ input:focus {
 
 .pregunta h3 {
     margin-right: 2rem;
-    font-size: 25px;
+    font-size: 45px;
     font-style: italic;
 }
 
@@ -605,6 +612,7 @@ input:focus {
 .acordeon h2 {
     font-style: italic;
     font-size: 70px;
+    text-align: center;
 }
 
 .accordion {
@@ -634,7 +642,7 @@ input:focus {
     display: inline;
     text-align: left;
     width: 100%;
-    padding: 1em 0;
+    padding: 0.5em 0;
     color: #25252580;
     font-size: 40px;
     font-weight: 400;
@@ -657,7 +665,7 @@ input:focus {
 }
 
 .accordion button .accordion-title {
-    padding: 1em 1.5em 1em 0;
+    padding: 0px;
 }
 
 .accordion button .icon {
@@ -703,7 +711,7 @@ input:focus {
 
 .accordion button[aria-expanded=true]+.accordion-content {
     opacity: 1;
-    max-height: 9em;
+    max-height: 13em;
     transition: all 200ms linear;
     will-change: opacity, max-height;
 }
@@ -720,6 +728,7 @@ input:focus {
 
 .accordion .accordion-content li {
     list-style: none;
+    font-size: 30px;
     padding-top: 0.5rem;
     font-style: italic;
     opacity: 0.8;
