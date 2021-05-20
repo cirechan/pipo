@@ -1,7 +1,7 @@
 :root {
-    --deg1: #a2cbc3;
+    --deg1: #a4ccc4;
     --deg2: #8ad2d2;
-    --gris1: rgba(255, 255, 255, 0.7);
+    --gris1: rgba(255, 255, 255, 0.702);
     --gris2: rgba(255, 255, 255, 0.3);
     --blanco: #ffffff;
     --negro: #252525;
@@ -19,6 +19,31 @@
     --rojoREC2: #f87676;
     --rojoREC3: #630f0f;
     --rojoREC4: #c53737;
+}
+
+::selection {
+    background-color: #252525;
+    color: #6cc7ebcb;
+}
+
+::-moz-selection {
+    background-color: #352e7e;
+    color: #fff;
+}
+
+::-o-selection {
+    background-color: #352e7e;
+    color: #fff;
+}
+
+::-ms-selection {
+    background-color: #352e7e;
+    color: #fff;
+}
+
+::-webkit-selection {
+    background-color: #352e7e;
+    color: #fff;
 }
 
 * {
@@ -51,9 +76,9 @@ body {
 }
 
 #loading h3 {
-    font-size: xx-large;
+    font-size: 45px;
+    font-weight: 500;
     text-transform: uppercase;
-    font-family: 'Ropa Sans', sans-serif;
 }
 
 #loading-animation {
@@ -125,166 +150,113 @@ main {
     max-width: 30%;
 }
 
-.user {
-    margin-bottom: 2rem;
+
+/* POP-UP */
+
+.pop-up-container {
+    position: absolute;
+    top: -5rem;
+    left: -3rem;
+    z-index: 99;
+    width: 50%;
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+    background-color: #00d95e65;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    backdrop-filter: blur(5px);
 }
 
-.user .logo {
-    height: 8rem;
-    width: 8rem;
+.pop-up {
     display: flex;
-    align-items: center;
+    margin-top: 0.5rem;
     justify-content: center;
-    z-index: 4;
-    border-radius: 50%;
-    overflow: hidden;
-    opacity: 0.95;
+    vertical-align: middle;
+    width: 100%;
+    transition: all 0.25s ease-in-out;
+    z-index: 9;
 }
 
-.user h3 {
-    font-size: 30px;
+.pop-up .pop-up-item {
+    border-bottom: 1px solid #25252520;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    transition: all 0.25s ease-in-out;
 }
 
-.user .logo img {
-    max-width: 110%;
-    max-height: 110%;
-    z-index: 4;
+.pop-up .pop-up-item button[aria-expanded=true] {
+    border-bottom: 1px solid var(--azul);
+    transition: all 0.25s ease-in-out;
 }
 
-.links {
-    min-width: 55%;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 50%;
-}
-
-.link {
+.pop-up button {
     position: relative;
-    width: 100%;
-    display: flex;
-    border-radius: 1rem;
-    z-index: 3;
-    height: 30%;
-    min-width: 90%;
-    align-items: center;
-}
-
-.link input,
-.status input {
+    display: inline;
+    flex-direction: row;
+    text-align: left;
+    min-width: 50%;
+    color: #252525;
+    opacity: 0.8;
+    font-size: 17px;
+    font-weight: 500;
     border: none;
-    background-image: none;
-    background-color: transparent;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    font-size: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 95%;
-    text-align: center;
-    font-style: italic;
-    font-weight: 600;
-    height: 100%;
+    background: none;
+    outline: none;
+    transition: all 0.25s ease-in-out;
 }
 
-.buscar {
-    height: 5rem;
-    width: 100%;
-    border-radius: 0px 25px 25px 0px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    box-shadow: 6px 6px 20px var(--sombra);
-    margin-left: 1rem;
-    padding: 1rem;
-}
-
-.buscar input {
-    height: 5rem;
-    width: 100%;
-}
-
-#google {
-    background: var(--blanco);
-}
-
-#youtube {
-    background: var(--rojoYoutube);
-}
-
-#spoti {
-    background: var(--verdeSpotify);
-}
-
-#tiempo {
-    background: var(--azulTiempo);
-    display: flex;
-    justify-content: space-between;
-}
-
-.tiempo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.tiempo:hover {
-    cursor: inherit;
-}
-
-#condition {
-    font-size: 25px;
-    text-transform: uppercase;
-    margin-left: 1rem;
-    color: var(--negro);
-    font-weight: 700;
-    word-wrap: normal;
-}
-
-.link img {
-    margin-left: -2rem;
-    left: 0%;
-    opacity: 0.4;
-    max-height: 70px;
-    transition: 0.5s ease-in-out
-}
-
-.link img:hover {
-    opacity: 0.6;
+.pop-up button:hover,
+.pop-up button:focus {
     cursor: pointer;
+    color: var(--blanco);
 }
 
-.link img:last-child:hover {
-    cursor: inherit;
-    opacity: 0.4;
+.pop-up button:hover::after,
+.pop-up button:focus::after {
+    cursor: pointer;
+    color: var(--blanco);
+    border: 1px solid var(--blanco);
 }
 
-.link h5 {
-    font-size: 40px;
-    color: var(--negro);
-    font-weight: bolder;
-    font-weight: 700;
+.pop-up button .pop-up-title {
+    padding: 1em 1.5em 1em 0;
+    transition: all 0.25s ease-in-out;
 }
 
-.link h5:hover {
-    cursor: default;
+.pop-up button .icon {
+    display: flex;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: all 0.25s ease-in-out;
+    z-index: 99;
 }
 
-#condition:hover {
-    cursor: default;
+.pop-up button[aria-expanded=true] {
+    color: var(--blanco);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    opacity: 0.6;
-    cursor: default;
+.pop-up button[aria-expanded=true] .icon {
+    transform: rotate(180deg);
+}
+
+.pop-up button[aria-expanded=true]+.pop-up-content {
+    opacity: 1;
+    transform: translateY(1rem);
+    max-height: 100%;
+    max-width: 100%;
+    transition: all 0.5s ease-in-out;
+    will-change: opacity, max-height, max-width;
+}
+
+.pop-up .pop-up-content {
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.5s ease-in-out;
+    will-change: opacity, max-height;
+    width: 100%;
+    padding-bottom: 1.5rem;
 }
 
 #spotify {
@@ -292,7 +264,7 @@ h6 {
     position: relative;
     width: 100%;
     display: flex;
-    height: 6rem;
+    height: 10rem;
     margin: 0.5rem auto;
     background: linear-gradient(270deg, rgba(111, 177, 105, 0.877), rgba(51, 53, 54, 0.795), rgba(85, 179, 127, 0.877), rgba(129, 145, 151, 0.795));
     background-size: 1000% 1000%;
@@ -358,6 +330,171 @@ h6 {
         opacity: 0.8;
         bottom: 0;
     }
+}
+
+.user {
+    margin-bottom: 2rem;
+}
+
+.user .logo {
+    height: 8rem;
+    width: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0.95;
+}
+
+.user h3 {
+    font-size: 30px;
+}
+
+.user .logo img {
+    max-width: 110%;
+    max-height: 110%;
+    z-index: 4;
+}
+
+.links {
+    border: 2px solid goldenrod;
+    width: 65%;
+    padding: 0;
+    display: flexbox;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 50%;
+    height: 70%;
+}
+
+.link {
+    position: relative;
+    width: 100%;
+    display: flex;
+    border-radius: 1rem;
+    z-index: 3;
+    height: 30%;
+    min-width: 90%;
+    align-items: center;
+}
+
+.link input,
+.status input {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 95%;
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+    height: 100%;
+}
+
+.buscar {
+    height: 5rem;
+    width: 100%;
+    border-radius: 0px 25px 25px 0px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-shadow: 6px 6px 20px var(--sombra);
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+.buscar input {
+    height: 5rem;
+    width: 100%;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+#google {
+    background: var(--blanco);
+}
+
+#youtube {
+    background: var(--rojoYoutube);
+}
+
+#spoti {
+    background: var(--verdeSpotify);
+}
+
+#tiempo {
+    background: var(--azulTiempo);
+    display: flex;
+    justify-content: space-between;
+}
+
+.tiempo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiempo:hover {
+    cursor: inherit;
+}
+
+#condition {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--negro);
+    font-weight: 700;
+    word-wrap: normal;
+}
+
+.link img {
+    margin-left: -2rem;
+    left: 0%;
+    opacity: 0.4;
+    max-height: 70px;
+    transition: 0.5s ease-in-out
+}
+
+.link img:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.link img:last-child:hover {
+    cursor: inherit;
+    opacity: 0.4;
+}
+
+.link h5 {
+    font-size: 30px;
+    color: var(--negro);
+    font-weight: bolder;
+    font-weight: 700;
+}
+
+.link h5:hover {
+    cursor: default;
+}
+
+#condition:hover {
+    cursor: default;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    opacity: 0.6;
+    cursor: default;
 }
 
 
@@ -456,7 +593,6 @@ h1:hover {
     background: linear-gradient(to left top, var(--gris1), var(--gris2));
     border: none;
     box-shadow: 6px 6px 20px var(--sombra);
-    padding: 0.5rem;
     border-radius: 1rem;
     overflow: hidden;
     align-items: center;
@@ -466,15 +602,16 @@ h1:hover {
 #status {
     font-weight: 400;
     opacity: 0.6;
-    width: 95%;
-    margin-top: 0.25rem;
+    width: 100%;
+    margin-left: 0;
 }
 
 #comando {
-    height: 100%;
+    height: 4rem;
     width: 100%;
     padding: 0;
     text-align: left;
+    font-size: 35px;
 }
 
 input:focus {
@@ -482,7 +619,7 @@ input:focus {
 }
 
 #micro {
-    height: 4rem;
+    height: 6vh;
     transform: scale(2);
     width: 12%;
     position: absolute;
@@ -495,12 +632,7 @@ input:focus {
 }
 
 #micro:hover {
-    min-width: 25px;
-}
-
-.content {
-    font-size: xx-large;
-    font-weight: 400;
+    min-width: 20px;
 }
 
 .respuesta {
@@ -517,6 +649,7 @@ input:focus {
     padding: 3rem;
     max-width: 85%;
     animation: mensajesRespuesta 0.25s ease-in-out;
+    z-index: 3;
 }
 
 .respuesta h3 {
@@ -558,6 +691,7 @@ input:focus {
     opacity: 0.6;
     background-color: var(--gris2);
     animation: mensajesPregunta 0.25s ease-in-out;
+    z-index: 3;
 }
 
 .pregunta img {
@@ -602,57 +736,63 @@ input:focus {
 /*ACORDION*/
 
 .acordeon {
-    position: absolute;
-    top: -0.75em;
+    position: relative;
     left: 0;
     margin: 0 auto;
     padding: 0rem;
-    width: 95%;
-    z-index: 99;
-    max-height: 19rem;
+    width: 65%;
     opacity: 0.8;
+    transition: all 0.25s ease-in-out;
 }
 
 .acordeon h2 {
     font-style: italic;
-    font-size: 2.5rem;
+    font-size: 25px;
+    margin-bottom: 0.5rem;
 }
 
 .accordion {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     margin-top: 0.5rem;
     justify-content: space-between;
+    width: 100%;
+    transition: all 0.25s ease-in-out;
 }
 
 .accordion .accordion-item {
     border-bottom: 1px solid #25252520;
     width: 100%;
-    padding: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    transition: all 0.25s ease-in-out;
 }
 
 .accordion .accordion-item:first-child {
     border-bottom: 1px solid #25252520;
     width: 100%;
-    padding: 1rem;
     padding-left: 0;
+    margin-top: 0.5rem;
 }
 
 .accordion .accordion-item button[aria-expanded=true] {
     border-bottom: 1px solid var(--azul);
+    transition: all 0.25s ease-in-out;
 }
 
 .accordion button {
     position: relative;
-    display: inline-block;
+    display: inline;
+    flex-direction: row;
     text-align: left;
-    width: 100%;
-    padding: 1em 0;
+    min-width: 100%;
     color: #25252580;
-    font-size: 1.15rem;
-    font-weight: 400;
+    font-size: 17px;
+    font-weight: 500;
     border: none;
     background: none;
     outline: none;
+    transition: all 0.25s ease-in-out;
 }
 
 .accordion button:hover,
@@ -670,63 +810,39 @@ input:focus {
 
 .accordion button .accordion-title {
     padding: 1em 1.5em 1em 0;
+    transition: all 0.25s ease-in-out;
 }
 
 .accordion button .icon {
     display: flex;
-    position: absolute;
+    position: relative;
     float: right;
-    width: 22px;
-    top: 1rem;
-    right: 0;
-    height: 22px;
-    border: 1px solid;
-    border-radius: 22px;
-}
-
-.accordion button .icon::before {
-    display: block;
-    position: absolute;
-    content: "";
-    top: 9px;
-    left: 5px;
-    width: 10px;
-    height: 2px;
-    background: currentColor;
-}
-
-.accordion button .icon::after {
-    display: block;
-    position: absolute;
-    content: "";
-    top: 5px;
-    left: 9px;
-    width: 2px;
-    height: 10px;
-    background: currentColor;
+    width: 20px;
+    height: 20px;
+    transition: all 0.25s ease-in-out;
 }
 
 .accordion button[aria-expanded=true] {
     color: var(--azul);
 }
 
-.accordion button[aria-expanded=true] .icon::after {
-    width: 0;
+.accordion button[aria-expanded=true] .icon {
+    transform: rotate(180deg);
 }
 
 .accordion button[aria-expanded=true]+.accordion-content {
     opacity: 1;
-    max-height: 9em;
-    transition: all 200ms linear;
-    will-change: opacity, max-height;
+    max-height: 80%;
+    max-width: 80%;
+    transition: all 0.5s ease-in-out;
+    will-change: opacity, max-height, max-width;
 }
 
 .accordion .accordion-content {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     opacity: 0;
     max-height: 0;
-    overflow: hidden;
-    transition: opacity 200ms linear, max-height 200ms linear;
+    transition: all 0.25s ease-in-out;
     will-change: opacity, max-height;
     width: 100%;
 }
@@ -735,7 +851,7 @@ input:focus {
     text-align: left;
     list-style: outside;
     list-style: circle;
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     font-style: italic;
     opacity: 0.8;
     cursor: default;
