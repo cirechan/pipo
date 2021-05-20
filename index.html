@@ -224,30 +224,6 @@
     }, 2500);
 
 
-    $(document).on('keypress', function(e) {
-        if (e.which == 13) {
-            if ($("#busq-google").val() != "") {
-                window.open('http://google.com/search?q=' + $("#busq-google").val(), "_blank");
-                $("#busq-google").val(null);
-            }
-            if ($("#busq-yt").val() != "") {
-                window.open('https://www.youtube.com/results?search_query=' + $("#busq-yt").val(), "_blank");
-                $("#busq-yt").val(null);
-            }
-            if ($("#busq-spotify").val() != "") {
-                window.open('https://open.spotify.com/search/' + $("#busq-spotify").val(), "_blank");
-                $("#busq-spotify").val(null);
-            }
-            if ($("#comando").val() != "") {
-                readOutLoud($("#comando").val(), $("#comando").val().substring(15), $("#comando").val().substring(6), $("#comando").val().substring(16), $("#comando").val().substring(17));
-                $("#comando").val(null);
-            }
-            if ($("#busq-google").val() == "" && $("#busq-yt").val() == "" && $("#busq-spotify").val() == "") {
-                void(0);
-            }
-        }
-
-    });
 
     $(function() {
         $('img').click(function() {
