@@ -224,6 +224,16 @@
     }, 2500);
 
 
+    $(document).on('keypress', function(e) {
+        if (e.which == 13) {
+
+            if ($("#comando").val() != "") {
+                readOutLoud($("#comando").val(), $("#comando").val().substring(15), $("#comando").val().substring(6), $("#comando").val().substring(16), $("#comando").val().substring(17));
+                $("#comando").val(null);
+            }
+
+        }
+    });
 
     $(function() {
         $('img').click(function() {
