@@ -158,7 +158,7 @@ main {
     top: -5rem;
     left: -3rem;
     z-index: 99;
-    width: 50%;
+    width: 65%;
     opacity: 1;
     transition: all 0.25s ease-in-out;
     background-color: #00d95e65;
