@@ -158,13 +158,14 @@ main {
     top: -5rem;
     left: -3rem;
     z-index: 99;
-    width: 85%;
+    width: 82%;
     opacity: 1;
     transition: all 0.25s ease-in-out;
     background-color: #00d95e65;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
     backdrop-filter: blur(5px);
+    animation: spotify 2s ease-in-out;
 }
 
 .pop-up {
@@ -178,24 +179,22 @@ main {
 }
 
 .pop-up .pop-up-item {
-    border-bottom: 1px solid #25252520;
     width: 100%;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     transition: all 0.25s ease-in-out;
+    font-weight: 500;
 }
 
 .pop-up .pop-up-item button[aria-expanded=true] {
-    border-bottom: 1px solid var(--azul);
     transition: all 0.25s ease-in-out;
 }
 
 .pop-up button {
     position: relative;
-    display: inline;
-    flex-direction: row;
-    text-align: left;
-    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     color: #252525;
     opacity: 0.8;
     font-size: 17px;
@@ -209,32 +208,33 @@ main {
 .pop-up button:hover,
 .pop-up button:focus {
     cursor: pointer;
-    color: var(--blanco);
+    color: var(--negro);
 }
 
 .pop-up button:hover::after,
 .pop-up button:focus::after {
     cursor: pointer;
-    color: var(--blanco);
-    border: 1px solid var(--blanco);
+    color: var(--negro);
+    border: 1px solid var(--negro);
 }
 
 .pop-up button .pop-up-title {
-    padding: 1em 1.5em 1em 0;
     transition: all 0.25s ease-in-out;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
 }
 
 .pop-up button .icon {
-    display: flex;
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    margin-left: 2rem;
     transition: all 0.25s ease-in-out;
-    z-index: 99;
 }
 
 .pop-up button[aria-expanded=true] {
-    color: var(--blanco);
+    color: var(--negro);
 }
 
 .pop-up button[aria-expanded=true] .icon {
@@ -245,7 +245,8 @@ main {
     opacity: 1;
     transform: translateY(1rem);
     max-height: 100%;
-    max-width: 100%;
+    min-width: 90%;
+    pointer-events: all;
     transition: all 0.5s ease-in-out;
     will-change: opacity, max-height, max-width;
 }
@@ -255,22 +256,19 @@ main {
     max-height: 0;
     transition: all 0.5s ease-in-out;
     will-change: opacity, max-height;
-    width: 100%;
-    padding-bottom: 1.5rem;
+    min-width: 90%;
+    pointer-events: none;
 }
 
 #spotify {
     display: none;
     position: relative;
-    width: 100%;
+    max-width: 90%;
     display: flex;
     height: 10rem;
     margin: 0.5rem auto;
     background: linear-gradient(270deg, rgba(111, 177, 105, 0.877), rgba(51, 53, 54, 0.795), rgba(85, 179, 127, 0.877), rgba(129, 145, 151, 0.795));
     background-size: 1000% 1000%;
-    -webkit-animation: AnimationName 25s ease infinite;
-    -moz-animation: AnimationName 25s ease infinite;
-    animation: AnimationName 25s ease infinite;
     box-shadow: 6px 6px 20px var(--sombra);
     border-radius: 2rem;
     justify-content: start;
@@ -283,7 +281,7 @@ main {
 #spot {
     padding-left: 2rem;
     z-index: 2;
-    width: 100%;
+    min-width: 100%;
     background-color: #25252550;
 }
 
@@ -324,11 +322,11 @@ main {
 @keyframes spotify {
     from {
         opacity: 0;
-        bottom: -2rem;
+        transform: translateY(-10px);
     }
     to {
         opacity: 0.8;
-        bottom: 0;
+        transform: translateY(0px);
     }
 }
 
@@ -359,29 +357,27 @@ main {
 }
 
 .links {
-    border: 2px solid goldenrod;
-    width: 65%;
+    position: absolute;
+    top: 3rem;
+    left: -2rem;
+    width: 82%;
     padding: 0;
-    display: flexbox;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    min-height: 50%;
-    height: 70%;
-}
-
-.link {
-    position: relative;
-    width: 100%;
     display: flex;
-    border-radius: 1rem;
-    z-index: 3;
-    height: 30%;
-    min-width: 90%;
-    align-items: center;
+    justify-content: space-around;
 }
 
-.link input,
+.links img {
+    width: auto;
+    height: 4rem;
+    opacity: 0.4;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.links img:hover {
+    opacity: 0.8;
+}
+
 .status input {
     border: none;
     background-image: none;
@@ -399,55 +395,45 @@ main {
     height: 100%;
 }
 
-.buscar {
-    height: 5rem;
-    width: 100%;
-    border-radius: 0px 25px 25px 0px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    box-shadow: 6px 6px 20px var(--sombra);
-    margin-left: 1rem;
-    padding: 1rem;
-}
-
-.buscar input {
-    height: 5rem;
-    width: 100%;
-    font-size: 16px;
-    opacity: 0.8;
-}
-
-#google {
-    background: var(--blanco);
-}
-
-#youtube {
-    background: var(--rojoYoutube);
-}
-
-#spoti {
-    background: var(--verdeSpotify);
-}
-
 #tiempo {
     background: var(--azulTiempo);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 10rem;
+    opacity: 0.8;
 }
 
-.tiempo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.weather-icon img {
+    width: auto;
+    height: 5rem;
 }
 
 .tiempo:hover {
     cursor: inherit;
 }
 
+.tiempo h5 {
+    font-size: 35px;
+    color: var(--negro);
+    font-weight: bolder;
+    font-weight: 700;
+}
+
+.tiempo h5:hover {
+    cursor: default;
+}
+
+#condition:hover {
+    cursor: default;
+}
+
 #condition {
-    font-size: 20px;
+    font-size: 22px;
     text-transform: uppercase;
     color: var(--negro);
     font-weight: 700;
@@ -472,21 +458,6 @@ main {
     opacity: 0.4;
 }
 
-.link h5 {
-    font-size: 30px;
-    color: var(--negro);
-    font-weight: bolder;
-    font-weight: 700;
-}
-
-.link h5:hover {
-    cursor: default;
-}
-
-#condition:hover {
-    cursor: default;
-}
-
 h1,
 h2,
 h3,
@@ -508,10 +479,6 @@ h6 {
     margin: 5rem;
     padding: 2rem;
     position: relative;
-}
-
-.barra-lateral img:first-child {
-    display: none;
 }
 
 .card {
@@ -542,6 +509,7 @@ h1:hover {
     font-size: 3rem;
     font-style: italic;
     opacity: 0.6;
+    text-align: end;
 }
 
 .fecha {
