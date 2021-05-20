@@ -28,7 +28,11 @@
 
     <main>
 
+
+
         <section class="glass">
+
+
 
             <div class="dashboard">
                 <div class="user">
@@ -38,7 +42,96 @@
                     </div>
 
                 </div>
+                <div class="acordeon">
+                    <h2>Comandos de voz</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Google</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="accordion-content">
+                                <li>Busca en Google...</li>
+                                <li>Qué es...?</li>
+                                <li>Quién es...?</li>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">YouTube</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="accordion-content">
+                                <li>Busca en YouTube...</li>
+                                <li>Pon en YouTube...</li>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Spotify</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="accordion-content">
+                                <li>Busca en Spotify...</li>
+                                <li>Activa Spotify...</li>
+                                <li>Desactiva Spotify...</li>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Tiempo</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="accordion-content">
+                                <li>Qué hora es? </li>
+                                <li>Qué tiempo hace?</li>
+                                <li>Que día es?</li>
+                                <li>Que día es hoy?</li>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">Saludos</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="accordion-content">
+                                <li>Hola</li>
+                                <li>Qué tal?</li>
+                                <li>Cómo estás?</li>
+                                <li>Qué pasa?</li>
+                                <li>Adiós</li>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-6" aria-expanded="false"><span class="accordion-title">Otros</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="accordion-content">
+                                <li>Cuéntame algo </li>
+                                <li>Cuéntame cosas</li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+
+
+
+            </div>
+
+
+            <div class="barra-lateral ">
+
+
+                <div class="pop-up-container">
+                    <div class="pop-up">
+                        <div class="accordion-item">
+                            <button id="pop-up-button" aria-expanded="false"><span class="accordion-title">REPRODUCTOR SPOTIFY</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
+                            <div class="pop-up-content">
+                                <div id="spotify">
+                                    <div id="spot">
+                                        <h3 id="title">Listo para reproducir</h3> <br>
+                                        <h4 id="artist"></h4>
+
+                                    </div>
+                                    <img id="album" src="">
+                                    <div id="spot-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hora">
+                    <h4 id="hora">00:00</h4>
+                </div>
+                <div class="fecha">
+                    <h4 id="day">1</h4>
+                    <h4 id="fecha">1</h4>
+                </div>
                 <div class="links">
 
                     <div class="link">
@@ -66,86 +159,10 @@
                             <h2 id="condition">unknown</h2>
                         </div>
                     </div>
-                    <div id="spotify">
-                        <div id="spot">
-                            <h3 id="title">Listo para reproducir</h3> <br>
-                            <h4 id="artist"></h4>
 
-                        </div>
-                        <img id="album" src="">
-                        <div id="spot-animation"></div>
-                    </div>
 
                 </div>
 
-
-            </div>
-
-
-            <div class="barra-lateral ">
-                <img src="./img/pipo logo color.png" alt="logo">
-                <div class="hora">
-                    <h4 id="hora">00:00</h4>
-                </div>
-                <div class="fecha">
-                    <h4 id="day">1</h4>
-                    <h4 id="fecha">1</h4>
-                </div>
-
-                <div class="acordeon">
-                    <h2>Comandos de voz</h2>
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Google</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <li>Busca en Google...</li>
-                                <li>Qué es...?</li>
-                                <li>Quién es...?</li>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">YouTube</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <li>Busca en YouTube...</li>
-                                <li>Pon en YouTube...</li>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Spotify</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <li>Busca en Spotify...</li>
-                                <li>Activa Spotify...</li>
-                                <li>Desactiva Spotify...</li>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Tiempo</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <li>Qué hora es? </li>
-                                <li>Qué tiempo hace?</li>
-                                <li>Que día es?</li>
-                                <li>Que día es hoy?</li>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">Saludos</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <li>Hola</li>
-                                <li>Qué tal?</li>
-                                <li>Cómo estás?</li>
-                                <li>Qué pasa?</li>
-                                <li>Adiós</li>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-6" aria-expanded="false"><span class="accordion-title">Otros</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <li>Cuéntame algo </li>
-                                <li>Cuéntame cosas</li>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="status-container">
                     <div class="status">
                         <h1 id="status">
@@ -168,7 +185,7 @@
                             <option value="QUÉ TAL?"></option>
                             <option value="CÓMO ESTÁS?"></option>
                             <option value="QUÉ PASA?"></option>
-                            <option value="ADIOS"></option>
+                            <option value="ADÓS"></option>
                             <option value="CUÉNTAME ALGO?"></option>
                             <option value="CUÉNTAME COSAS?"></option>
 

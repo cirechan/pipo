@@ -122,6 +122,23 @@ function toggleAccordion() {
 
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 
+//Pop-Up
+const items2 = document.querySelectorAll(".pop-up button");
+
+function togglePopup() {
+    const itemToggle = this.getAttribute('aria-expanded');
+
+    for (i = 0; i < items2.length; i++) {
+        items2[i].setAttribute('aria-expanded', 'false');
+    }
+
+    if (itemToggle == 'false') {
+        this.setAttribute('aria-expanded', 'true');
+    }
+}
+
+items2.forEach(item => item.addEventListener('click', togglePopup));
+
 
 //Reconocimiento de voz
 
@@ -472,13 +489,13 @@ function playSpotify() { //Función para reproductor de Spotify
 
 
 function recuadroV() {
-    const recuadro = document.getElementById('spotify');
+    const recuadro = document.querySelector('.pop-up-container');
     recuadro.style.display = "flex";
 }
 
 
 function recuadroH() {
-    const recuadro = document.getElementById('spotify');
+    const recuadro = document.querySelector('.pop-up-container');
     recuadro.style.display = "none";
 
 }
