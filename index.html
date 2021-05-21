@@ -247,17 +247,20 @@
 
             if ($(this).attr('id') == 'g') {
 
-                window.open('http://google.com/search?q=' + $("#busq-google").val(), "_blank");
-                $("#busq-google").val(null);
+                window.open('http://google.com/');
 
             } else if ($(this).attr('id') == 'yt') {
 
-                window.open('https://www.youtube.com/results?search_query=' + $("#busq-yt").val(), "_blank");
-                $("#busq-yt").val(null);
+                window.open('https://www.youtube.com');
             } else if ($(this).attr('id') == 'spotifyb') {
 
-                window.open('https://open.spotify.com/search/' + $("#busq-spotify").val(), "_blank");
-                $("#busq-spotify").val(null);
+                window.open('https://open.spotify.com/search/');
+            } else if ($(this).attr('id') == 'calendar') {
+
+                window.open('https://calendar.google.com/');
+            } else if ($(this).attr('id') == 'gmail') {
+
+                window.open('https://mail.google.com/');
             }
 
 
