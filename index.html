@@ -239,7 +239,14 @@
     $('.accordion-content li').click(function() {
         var comando = $(this).text();
         $("#comando").val(comando);
+        var inputComando = $("#comando").val();
 
+
+
+        if (inputComando != "" && !inputComando.toLowerCase().includes('busca') && !inputComando.toLowerCase().includes('pon') && !inputComando.toLowerCase().includes('qué es') && !inputComando.toLowerCase().includes('quién es')) {
+            readOutLoud(inputComando, inputComando.substring(15), inputComando.substring(6), inputComando.substring(16), inputComando.substring(17));
+            $("#comando").val(null);
+        }
     });
 
     $(function() {
