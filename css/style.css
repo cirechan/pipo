@@ -695,11 +695,11 @@ input:focus {
 @keyframes mensajesRespuesta {
     from {
         opacity: 0;
-        left: -2rem;
+        left: -5rem;
     }
     to {
         opacity: 0.6;
-        left: 0;
+        left: -3rem;
     }
 }
 
