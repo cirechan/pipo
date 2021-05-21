@@ -28,35 +28,35 @@ const micro1 = bodymovin.loadAnimation({
     animType: 'svg',
     loop: false,
     autoplay: false,
-    path: "https://assets10.lottiefiles.com/packages/lf20_4V7Rkx.json"
+    path: "json/micro.json"
 });
 const animPipo = bodymovin.loadAnimation({
     wrapper: svgCpipo,
     animType: 'svg',
     loop: false,
     autoplay: false,
-    path: 'svg/pipo-hablando.json'
+    path: 'json/pipo-hablando.json'
 });
 const animQuestion = bodymovin.loadAnimation({
     wrapper: question,
     animType: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets8.lottiefiles.com/private_files/lf30_biksmz70.json'
+    path: 'json/question.json'
 });
 const animLoading = bodymovin.loadAnimation({
     wrapper: loading,
     animType: 'svg',
     loop: false,
     autoplay: true,
-    path: 'svg/loading.json'
+    path: 'json/loading.json'
 });
 const spotifyAnimation = bodymovin.loadAnimation({
     wrapper: spotifyAnim,
     animType: 'svg',
     loop: true,
     autoplay: true,
-    path: 'svg/spotify.json'
+    path: 'json/spotify.json'
 });
 
 
@@ -99,9 +99,7 @@ function preguntaTexto() {
 
         animQuestion.setDirection(-1);
         animQuestion.goToAndPlay(0, false);
-
     })
-
 
 }
 

@@ -48,24 +48,24 @@
                         <div class="accordion-item">
                             <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Google</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
                             <div class="accordion-content">
-                                <li>Busca en Google...</li>
-                                <li>Qué es...?</li>
-                                <li>Quién es...?</li>
+                                <li>Busca en Google </li>
+                                <li>Qué es </li>
+                                <li>Quién es </li>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">YouTube</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
                             <div class="accordion-content">
-                                <li>Busca en YouTube...</li>
-                                <li>Pon en YouTube...</li>
+                                <li>Busca en YouTube </li>
+                                <li>Pon en YouTube </li>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Spotify</span><span class="icon" aria-hidden="true"><img src="./svg/down-arrow.svg" alt=""></span></button>
                             <div class="accordion-content">
-                                <li>Busca en Spotify...</li>
-                                <li>Activa Spotify...</li>
-                                <li>Desactiva Spotify...</li>
+                                <li>Busca en Spotify </li>
+                                <li>Activa Spotify</li>
+                                <li>Desactiva Spotify</li>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -115,7 +115,6 @@
                                     <div id="spot">
                                         <h3 id="title">Listo para reproducir</h3> <br>
                                         <h4 id="artist"></h4>
-
                                     </div>
                                     <img id="album" src="">
                                     <div id="spot-animation"></div>
@@ -143,9 +142,11 @@
                 </div>
                 <div class="links">
                     <img id="g" src="./svg/google.svg" alt="">
-                    <img id="gmail" src="./svg/gmail.png" alt="">
-                    <img id="spotifyb" src="./svg/spotify.svg" alt="">
-                    <img id="yt" src="./svg/youtube.png" alt="">
+                    <img id="gmail" src="./img/gmail.png" alt="">
+                    <img id="calendar" src="./img/calendar.png" alt="">
+                    <img id="spotifyb" src="./img/spotify.png" alt="">
+                    <img id="yt" src="./img/youtube.png" alt="">
+
                 </div>
 
                 <div class="status-container">
@@ -170,9 +171,9 @@
                             <option value="QUÉ TAL?"></option>
                             <option value="CÓMO ESTÁS?"></option>
                             <option value="QUÉ PASA?"></option>
-                            <option value="ADÓS"></option>
-                            <option value="CUÉNTAME ALGO?"></option>
-                            <option value="CUÉNTAME COSAS?"></option>
+                            <option value="ADIÓS"></option>
+                            <option value="CUÉNTAME ALGO"></option>
+                            <option value="CUÉNTAME COSAS"></option>
 
                       </datalist>
 
@@ -233,6 +234,12 @@
             }
 
         }
+    });
+
+    $('.accordion-content li').click(function() {
+        var comando = $(this).text();
+        $("#comando").val(comando);
+
     });
 
     $(function() {
