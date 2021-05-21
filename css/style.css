@@ -810,6 +810,7 @@ input:focus {
     max-width: 80%;
     transition: all 0.5s ease-in-out;
     will-change: opacity, max-height, max-width;
+    pointer-events: all;
 }
 
 .accordion .accordion-content {
@@ -819,6 +820,7 @@ input:focus {
     transition: all 0.25s ease-in-out;
     will-change: opacity, max-height;
     width: 100%;
+    pointer-events: none;
 }
 
 .accordion .accordion-content li {
