@@ -376,6 +376,7 @@ main {
 
 .links img:hover {
     opacity: 0.8;
+    transform: translateY(-5px);
 }
 
 .status input {
