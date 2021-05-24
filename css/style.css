@@ -152,6 +152,14 @@ main {
     max-width: 30%;
 }
 
+#toggle-com {
+    display: none;
+}
+
+#cerrar {
+    display: none;
+}
+
 
 /* POP-UP */
 
@@ -370,7 +378,7 @@ main {
     width: auto;
     height: 2.5rem;
     opacity: 0.4;
-    transition: all 1s ease;
+    transition: all 0.25s ease;
     cursor: pointer;
 }
 
@@ -554,7 +562,7 @@ h1:hover {
 .status-container {
     position: absolute;
     height: 4rem;
-    width: 100%;
+    width: 104%;
     left: -3rem;
     bottom: -2rem;
 }
@@ -594,7 +602,6 @@ input:focus {
 }
 
 #micro {
-    height: 6vh;
     transform: scale(2);
     width: 12%;
     position: absolute;
@@ -603,11 +610,8 @@ input:focus {
     vertical-align: middle;
     cursor: pointer;
     right: 0;
+    transform: translateY(-1rem);
     opacity: 0.6;
-}
-
-#micro:hover {
-    min-width: 20px;
 }
 
 .respuesta {
@@ -843,6 +847,189 @@ input:focus {
 
 @media (max-width: 768px) {
     body {
-        background: #000;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    main {
+        height: 80vh;
+        width: 100%;
+    }
+    #loading {
+        display: none;
+    }
+    #loading h3 {
+        font-size: 25px;
+    }
+    #loading-animation {
+        width: 60%;
+    }
+    .container {
+        padding: 0;
+    }
+    .glass {
+        height: 95%;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    .circle1,
+    .circle2 {
+        display: none;
+    }
+    .dashboard {
+        flex: none;
+        width: 100%;
+        height: 10%;
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+        max-width: none;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        border-bottom-left-radius: 0;
+    }
+    .barra-lateral {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex: 2;
+        flex-direction: column;
+        justify-content: space-around;
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    .pop-up-container {
+        display: none;
+    }
+    .hora {
+        display: none;
+    }
+    .links {
+        display: none;
+    }
+    #toggle-com {
+        display: block;
+        width: 25px;
+        opacity: 0.6;
+        height: auto;
+        margin-right: 0.5rem;
+    }
+    #acordeon {
+        display: none;
+    }
+    .acordeon {
+        position: absolute;
+        margin: 0 auto;
+        top: -5%;
+        backdrop-filter: blur(1rem);
+        background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
+        opacity: 1;
+        left: -5%;
+        height: 120%;
+        z-index: 99;
+        padding: 3rem;
+        width: 110%;
+        animation: intro 0.25s ease-in-out;
+    }
+    @keyframes intro {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .acordeon #cerrar {
+        width: 20px;
+        height: 20px;
+        margin: 0 auto;
+    }
+    .acordeon #cerrar:hover {
+        font-size: 25px;
+        color: var(--rojoREC1);
+        width: 100%;
+    }
+    .acordeon h2 {
+        margin-top: 5rem;
+    }
+    .accordion {
+        margin-top: 4rem;
+    }
+    .user {
+        display: block;
+        margin: 0;
+    }
+    .user .logo {
+        height: 4rem;
+        width: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 4;
+        border-radius: 50%;
+        overflow: hidden;
+        opacity: 0.95;
+    }
+    .status-container {
+        position: absolute;
+        height: 4rem;
+        width: 85%;
+        left: 1rem;
+        bottom: 1rem;
+    }
+    .status {
+        width: 75%;
+    }
+    #comando {
+        font-size: 20px;
+    }
+    #micro {
+        width: 15%;
+        right: 0;
+        height: 100px;
+        transform: scale(2);
+        bottom: -1rem;
+    }
+    .respuesta {
+        position: absolute;
+        left: 1rem;
+        bottom: 14rem;
+        max-width: 92%;
+    }
+    .respuesta h3 {
+        margin-left: 1rem;
+        font-size: 20px;
+    }
+    #svg-pipo {
+        position: absolute;
+        left: -1rem;
+        align-items: center;
+        align-self: center;
+        width: 5rem;
+        pointer-events: none;
+    }
+    #question {
+        position: absolute;
+        right: 0;
+        margin-right: 0.5rem;
+        pointer-events: none;
+        height: 4rem;
+        width: 4rem;
+        opacity: 0.6;
+    }
+    .pregunta {
+        right: 1rem;
+        bottom: 5rem;
+    }
+    .pregunta img {
+        width: 1rem;
+    }
+    .pregunta h3 {
+        margin-right: 2rem;
+        font-size: 20px;
     }
 }
