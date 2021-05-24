@@ -927,7 +927,7 @@ input:focus {
         position: absolute;
         margin: 0 auto;
         top: -5%;
-        backdrop-filter: blur(1rem);
+        backdrop-filter: blur(30px);
         background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
         opacity: 1;
         left: -5%;
