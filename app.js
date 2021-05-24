@@ -142,6 +142,7 @@ items2.forEach(item => item.addEventListener('click', togglePopup));
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
+micro1.setSpeed(1.5);
 
 var activo = 0; // botón activo 
 btn.addEventListener('click', () => {
