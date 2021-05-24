@@ -241,9 +241,12 @@
     $('.accordion-content li').click(function() {
         var comando = $(this).text();
         $("#comando").val(comando);
+        $("#comando").focus();
+
         var inputComando = $("#comando").val();
-
-
+        if ($(window).width() <= 768) {
+            document.getElementById("acordeon").style.display = "none";
+        }
 
         if (inputComando != "" && !inputComando.toLowerCase().includes('busca') && !inputComando.toLowerCase().includes('pon') && !inputComando.toLowerCase().includes('qué es') && !inputComando.toLowerCase().includes('quién es')) {
             readOutLoud(inputComando, inputComando.substring(15), inputComando.substring(6), inputComando.substring(16), inputComando.substring(17));
@@ -255,8 +258,8 @@
         $('img').click(function() {
 
             if ($(this).attr('id') == 'g') {
-
                 window.open('http://google.com/');
+
 
             } else if ($(this).attr('id') == 'yt') {
 
@@ -271,6 +274,7 @@
 
                 window.open('https://mail.google.com/');
             }
+
         });
         $('img').click(function() {
 
