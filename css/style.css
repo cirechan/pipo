@@ -853,8 +853,9 @@ input:focus {
         overflow-y: hidden;
     }
     main {
-        height: 80vh;
+        height: 100vh;
         width: 100%;
+        min-height: none;
     }
     #loading {
         display: none;
@@ -869,7 +870,7 @@ input:focus {
         padding: 0;
     }
     .glass {
-        height: 95%;
+        height: 90%;
         width: 90%;
         display: flex;
         flex-direction: column;
@@ -913,7 +914,7 @@ input:focus {
     }
     #toggle-com {
         display: block;
-        width: 25px;
+        width: 30px;
         opacity: 0.6;
         height: auto;
         margin-right: 0.5rem;
@@ -947,6 +948,7 @@ input:focus {
         width: 20px;
         height: 20px;
         margin: 0 auto;
+        opacity: 0.8;
     }
     .acordeon #cerrar:hover {
         font-size: 25px;
