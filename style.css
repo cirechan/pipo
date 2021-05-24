@@ -902,6 +902,7 @@ input:focus {
         position: relative;
         margin: 0;
         padding: 0;
+        overflow: hidden;
     }
     .pop-up-container {
         display: none;
@@ -914,7 +915,7 @@ input:focus {
     }
     #toggle-com {
         display: block;
-        width: 25px;
+        width: 30px;
         opacity: 0.6;
         height: auto;
         margin-right: 0.5rem;
@@ -948,6 +949,7 @@ input:focus {
         width: 20px;
         height: 20px;
         margin: 0 auto;
+        opacity: 0.8;
     }
     .acordeon #cerrar:hover {
         font-size: 25px;
@@ -986,7 +988,7 @@ input:focus {
         width: 75%;
     }
     #comando {
-        font-size: 20px;
+        font-size: 16px;
     }
     #micro {
         width: 15%;
@@ -1003,7 +1005,7 @@ input:focus {
     }
     .respuesta h3 {
         margin-left: 1rem;
-        font-size: 20px;
+        font-size: 16px;
     }
     #svg-pipo {
         position: absolute;
