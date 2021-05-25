@@ -845,20 +845,22 @@ input:focus {
     opacity: 0.8;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1025px) {
     body {
         width: 100%;
         height: 100%;
         overflow-x: hidden;
-        overflow-y: hidden;
+        background: linear-gradient(to right top, var(--deg1), var(--deg2));
     }
     main {
-        height: 100vh;
+        margin: 0 auto;
         width: 100%;
-        min-height: none;
+        min-height: 95vh;
+        border-radius: 0;
+        background: none;
     }
     #loading {
-        display: none;
+        display: flex;
     }
     #loading h3 {
         font-size: 25px;
@@ -873,6 +875,7 @@ input:focus {
         height: 90%;
         width: 90%;
         display: flex;
+        min-height: none;
         flex-direction: column;
     }
     .circle1,
@@ -926,12 +929,12 @@ input:focus {
     .acordeon {
         position: absolute;
         margin: 0 auto;
-        top: -5%;
-        backdrop-filter: blur(1rem);
-        background: linear-gradient(to right bottom, var(--gris1), var(--gris2));
+        top: -8%;
+        backdrop-filter: blur(30px);
+        background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.702), #ffffff);
         opacity: 1;
         left: -5%;
-        height: 120%;
+        height: 140%;
         z-index: 99;
         padding: 3rem;
         width: 110%;
@@ -946,9 +949,12 @@ input:focus {
         }
     }
     .acordeon #cerrar {
+        position: absolute;
         width: 20px;
         height: 20px;
         margin: 0 auto;
+        top: 6.5rem;
+        right: 3rem;
         opacity: 0.8;
     }
     .acordeon #cerrar:hover {
@@ -957,7 +963,7 @@ input:focus {
         width: 100%;
     }
     .acordeon h2 {
-        margin-top: 5rem;
+        margin-top: 7rem;
     }
     .accordion {
         margin-top: 4rem;
@@ -988,7 +994,7 @@ input:focus {
         width: 75%;
     }
     #comando {
-        font-size: 20px;
+        font-size: 16px;
     }
     #micro {
         width: 15%;
@@ -1005,7 +1011,7 @@ input:focus {
     }
     .respuesta h3 {
         margin-left: 1rem;
-        font-size: 20px;
+        font-size: 16px;
     }
     #svg-pipo {
         position: absolute;
