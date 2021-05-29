@@ -7,14 +7,11 @@ $(document).ready(function() {
         }
     }
 
-
-
     function getWeather(position) {
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
         let API_KEY = 'bf715dcd93e17e20902eaf9197616477';
         let baseURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${API_KEY}`;
-
         $.get(baseURL, function(res) {
             let data = res.current;
             let temp = Math.floor(data.temp - 273);
@@ -22,8 +19,6 @@ $(document).ready(function() {
             let locationIcon = document.querySelector('.weather-icon');
             const { icon } = data.weather[0];
             locationIcon.innerHTML = `<img src = 'icons/${icon}.png' >`;
-
-
             const condicion = [
                 "despejado",
                 "nublado",
@@ -48,35 +43,23 @@ $(document).ready(function() {
                 "Tornado",
                 "Fog"
             ];
-
             var index = 0;
-
             translate.forEach(cond => {
-
                 if (condition === cond) {
-
                     index = translate.indexOf(cond);
                     console.log(index);
                 }
-
             });
-
-
             console.log(data);
-
             $('#temp-main').html(`${temp}°`);
             $('#condition').html(condicion[index]);
         })
-
     }
-
-
     recuadroH();
     mueveReloj();
     getLocation();
     playSpotify();
     spotifyLottie();
-
 });
 
 function addZero(i) {
@@ -86,11 +69,7 @@ function addZero(i) {
     return i;
 }
 
-
-
-
 function mueveReloj() {
-
     var weekday = new Array(7);
     weekday[0] = "Domingo";
     weekday[1] = "Lunes";
@@ -108,12 +87,9 @@ function mueveReloj() {
     const hora = addZero(today.getHours()) + " : " + addZero(today.getMinutes());
     const fecha = addZero(today.getDate()) + "/" + addZero((today.getMonth() + 1)) + "/" + addZero(today.getFullYear());
     const diaSemana = weekday[today.getDay()];;
-
-
     time.textContent = hora;
     date.textContent = fecha;
     day.textContent = diaSemana;
-
 
     setTimeout("mueveReloj()", 1000)
 }
