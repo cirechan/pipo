@@ -1,6 +1,6 @@
 :root {
-    --deg1: #a4ccc4;
-    --deg2: #8ad2d2;
+    --deg1: rgb(164, 204, 196);
+    --deg2: rgb(137, 209, 209);
     --gris1: rgba(255, 255, 255, 0.702);
     --gris2: rgba(255, 255, 255, 0.302);
     --blanco: #ffffff;
