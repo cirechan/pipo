@@ -5,14 +5,11 @@ const contenedorRespuesta = document.querySelector('.respuesta');
 const contenedorPregunta = document.querySelector('.pregunta');
 const imagenes = document.querySelector('.imagenes');
 
-
-
 const afirmacion = ["Voy!", "Enseguida!", "Claro!", "Por Supuesto!"];
 const cosas = ["Pedro de la Rosa mantiene todavía la vuelta rápida en carrera de la Fórmula 1 en el circuito de Bahréin", "El cometa Halley, es un cometa grande y brillante que orbita alrededor del Sol cada 75 años en promedio", "Los elefantes son capaces de localizar agua y de detectar lluvias a distancias de aproximadamente 250 km", " Las jirafas no emiten sonido alguno convirtiéndose de esta manera en el único mamífero con esta característica", "Se necesitan 200 litros de agua para producir un solo litro de gaseosa "];
-const estado = ["Lista pa la guerra ya tu sabe", "Podría estar en la piscina, pero estoy aquí", "Nada mal", "Molt bé", "He tenido días peores", "He tenido días mejores"];
+const estado = ["Bien, y tú?", "Podría estar en la piscina, pero estoy aquí", "Nada mal", "Molt bé", "He tenido días peores", "He tenido días mejores"];
 const comandoError = ["Eso no era un comando que yo conozca, prueba de nuevo", "No te he entendido, vuelve a intentarlo"];
 const hola = ["Hola", "Hello", "Ciao", "Bon día"];
-
 
 //Lottie animations
 const svgContainer = document.getElementById('micro');
@@ -20,7 +17,6 @@ const svgCpipo = document.getElementById('svg-pipo');
 const question = document.getElementById('question');
 const loading = document.getElementById('loading-animation');
 const spotifyAnim = document.getElementById('spot-animation');
-
 
 const micro1 = bodymovin.loadAnimation({
     wrapper: svgContainer,
@@ -58,7 +54,6 @@ const spotifyAnimation = bodymovin.loadAnimation({
     path: 'json/spotify.json'
 });
 
-
 function loadingAnimation() {
     animLoading.setDirection(1);
     animLoading.goToAndPlay(0, true);
@@ -69,22 +64,16 @@ function spotifyLottie() {
     spotifyAnimation.goToAndPlay(0, true);
 }
 
-
-
 //listener 
 function hablaPipo() {
     svgCpipo.classList.remove('hide');
     contenedorRespuesta.classList.remove('hide');
     animPipo.setDirection(1);
     animPipo.goToAndPlay(0, true);
-
     animPipo.addEventListener('complete', () => {
-
         animPipo.setDirection(-1);
         animPipo.goToAndPlay(0, false);
     })
-
-
 }
 
 function preguntaTexto() {
@@ -92,14 +81,10 @@ function preguntaTexto() {
     contenedorPregunta.classList.remove('hide');
     animQuestion.setDirection(1);
     animQuestion.goToAndPlay(0, true);
-
-
     animQuestion.addEventListener('complete', () => {
-
         animQuestion.setDirection(-1);
         animQuestion.goToAndPlay(0, false);
     })
-
 }
 
 //Acordeón
@@ -111,12 +96,10 @@ function toggleAccordion() {
     for (i = 0; i < items.length; i++) {
         items[i].setAttribute('aria-expanded', 'false');
     }
-
     if (itemToggle == 'false') {
         this.setAttribute('aria-expanded', 'true');
     }
 }
-
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 
 //Pop-Up
@@ -128,24 +111,18 @@ function togglePopup() {
     for (i = 0; i < items2.length; i++) {
         items2[i].setAttribute('aria-expanded', 'false');
     }
-
     if (itemToggle == 'false') {
         this.setAttribute('aria-expanded', 'true');
     }
 }
-
 items2.forEach(item => item.addEventListener('click', togglePopup));
 
-
 //Reconocimiento de voz
-
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 micro1.setSpeed(1.5);
-
 var activo = 0; // botón activo 
 btn.addEventListener('click', () => {
-
     if (activo === 0) {
         recognition.start();
         recognition.lang = 'es-ES';
@@ -160,7 +137,6 @@ btn.addEventListener('click', () => {
 });
 
 recognition.onstart = function() {
-
     console.log('voice is activated');
     micro1.setDirection(1);
     micro1.goToAndPlay(0, true);
@@ -175,10 +151,8 @@ recognition.onstart = function() {
     }, 5000)
 };
 
-
 //Resultado del reconocimineto
 recognition.onresult = function(event) {
-
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
     const busqueda = transcript.substring(15); //busqueda google
@@ -194,9 +168,7 @@ recognition.onresult = function(event) {
 };
 
 //Interpretación del comando
-
 function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
-
     const speech = new SpeechSynthesisUtterance();
     const noEntiendo = comandoError[Math.floor(Math.random() * comandoError.length)]
     speech.text = noEntiendo;
@@ -210,7 +182,6 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
 
         window.open('http://google.com/search?q=' + busqueda, "_blank");
     }
-
     if (message.toLowerCase().includes('busca en youtube')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
@@ -252,17 +223,13 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         if (!_token) {
             window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
         }
-
         playSpotify();
-
     }
     if (message.toLowerCase().includes('desactiva spotify')) {
         const finalText = afirmacion[Math.floor(Math.random() * afirmacion.length)];
         speech.text = finalText;
         respuesta.textContent = finalText;
-
         player.pause();
-
     }
     if (message.toLowerCase().includes('cuéntame cosas') || message.toLowerCase().includes('cuéntame algo')) {
         const finalText = "Sabías qué  " + cosas[Math.floor(Math.random() * cosas.length)];
@@ -289,7 +256,6 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
             diaN = diaN.slice(1, 2)
         }
         var mesN = document.getElementById("fecha").innerHTML.slice(3, 5);
-
         const finalText = "Hoy es " + dia + " " + diaN + " de " + mL[parseInt(mesN) - 1];
         respuesta.textContent = finalText;
         speech.text = "Hoy es" + dia + diaN + "de" + mL[parseInt(mesN) - 1];
@@ -303,8 +269,6 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         } else {
             condicion = " " + condition;
         }
-
-
         const finalText = "Ahora mismo hay " + grados + " y " + condicion;
         speech.text = finalText;
         respuesta.textContent = finalText;
@@ -321,16 +285,12 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
     }
     if (message.toLowerCase().includes("hora")) {
         var today = new Date();
-
-
         var hora = today.getHours() + " horas y " + today.getMinutes() + " minutos";
-
         if (parseInt(today.getMinutes()) == 0) {
             hora = today.getHours() + " en punto";
         }
         speech.text = "Son las" + hora;
         respuesta.textContent = "Son las: " + hora;
-
     }
     if (message.toLowerCase().includes("hola")) {
         const finalText = hola[Math.floor(Math.random() * hola.length)];
@@ -342,52 +302,32 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         speech.text = finalText;
         respuesta.textContent = finalText;
     }
-
     preguntaTexto();
     hablaPipo();
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
     window.speechSynthesis.speak(speech);
-
 };
-
-
-
 // Funciones 
-
 function playYoutube(search) { //Función para reproducir video de YT
-
     let API_KEY = "AIzaSyCcc1lUDBSJdSnzmJFLseJ_PIuOzCnJkmk";
-
     let baseURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${search}&key=${API_KEY}`;
-
     $.get(baseURL, function(data) {
         console.log(data);
-
         var url;
         data.items.forEach(item => {
-
             if (item.id.videoId !== undefined) {
-
                 if (url == undefined) {
                     url = "https://www.youtube.com/watch?v=" + item.id.videoId;
                     window.open(url, "_blank");
                 }
-
-            } else {
-
-
-            }
-
+            } else {}
         });
-
     });
 }
 
-
-
-// Get the hash of the url
+// obtener token pasado por enlace
 const hash = window.location.hash
     .substring(1)
     .split('&')
@@ -402,10 +342,10 @@ window.location.hash = '';
 _token = hash.access_token;
 console.log(_token);
 
-// Set token
+// Asignar token
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
-// Replace with your app's client ID, redirect URI and desired scopes
+// Datos para la API de Spotify 
 const clientId = '5967f5e598b94ca09b4c5fd41c142cce';
 const redirectUri = 'https://pipo-asistente.netlify.app/';
 const scopes = [
@@ -413,30 +353,23 @@ const scopes = [
     'user-read-private',
     'user-modify-playback-state'
 ];
-
 let player = null;
 
 function playSpotify() { //Función para reproductor de Spotify
-
     window.onSpotifyWebPlaybackSDKReady = () => {
         player = new Spotify.Player({
             name: 'PIPO',
             getOAuthToken: cb => { cb(_token); }
         });
-
-
         const title = document.getElementById('title');
         const artist = document.getElementById('artist');
         const album = document.getElementById('album');
 
         if (player != null) {
-
-
             player.addListener('player_state_changed', ({
                 track_window: { current_track }
             }) => {
                 console.log('Currently Playing', current_track);
-
                 var artistas = "";
                 var fotoAlbum = "";
                 current_track.artists.forEach(element => {
@@ -453,44 +386,32 @@ function playSpotify() { //Función para reproductor de Spotify
                 album.style.opacity = "0.3";
                 album.style.objectFit = "cover";
                 album.style.borderRadius = "2rem";
-
                 recuadroV();
-
             });
-
-            // Ready
+            // Listo
             player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
+                console.log('ID del reproductor', device_id);
                 recuadroV();
             });
-
-            // Not Ready
+            // No está listo
             player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
+                console.log('El reproductor no está disponible', device_id);
             });
-
-            // Error handling
+            //Posibles errores
             player.addListener('initialization_error', ({ message }) => { console.error(message); });
             player.addListener('authentication_error', ({ message }) => { console.error(message); });
             player.addListener('account_error', ({ message }) => { console.error(message); });
             player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-
-            // Connect to the player!
+            // Conectar el reproductor
             player.connect();
         }
     };
-
-
 }
-
-
 
 function recuadroV() {
     const recuadro = document.querySelector('.pop-up-container');
     recuadro.style.display = "flex";
 }
-
 
 function recuadroH() {
     const recuadro = document.querySelector('.pop-up-container');
