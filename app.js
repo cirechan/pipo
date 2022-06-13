@@ -270,7 +270,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         var fechaFin    = new Date().getTime();
         
         var diff = fechaFin - fechaInicio;
-        
+        console.log( fechaFin / fechaInicio);
         var dias = diff/(1000*60*60*24) ;
                          // (1000*60*60*24) --> milisegundos -> segundos -> minutos -> horas -> días
 
