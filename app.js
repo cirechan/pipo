@@ -10,6 +10,7 @@ const cosas = ["Pedro de la Rosa mantiene todavía la vuelta rápida en carrera 
 const estado = ["Bien, y tú?", "Podría estar en la piscina, pero estoy aquí", "Nada mal", "Molt bé", "He tenido días peores", "He tenido días mejores"];
 const comandoError = ["Eso no era un comando que yo conozca, prueba de nuevo", "No te he entendido, vuelve a intentarlo"];
 const hola = ["Hola", "Hello", "Ciao", "Bon día"];
+const joda = ['Coña?', 'Despiértame de esta vida gitana que llevo', 'A mí me están filmando', 'Y Carlangas se ha hecho un porro, buenas tardes'];
 
 //Lottie animations
 const svgContainer = document.getElementById('micro');
@@ -283,7 +284,7 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         
 
 
-        const finalText = `Despiértame de esta vida gitana que llevo entonces`;
+        const finalText = joda[Math.floor(Math.random() * joda.length)];
         respuesta.textContent = finalText;
         speech.text = finalText;
     }
