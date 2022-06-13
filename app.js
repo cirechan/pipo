@@ -118,7 +118,7 @@ function togglePopup() {
 items2.forEach(item => item.addEventListener('click', togglePopup));
 
 //FECHA GYM
-var fechaInicio = new Date('2022-06-16').getTime();
+var fechaInicio = new Date('2022-05-16').getTime();
 
 //Reconocimiento de voz
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -270,11 +270,11 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         var fechaFin    = new Date().getTime();
         
         var diff = fechaFin - fechaInicio;
-        console.log( fechaFin / fechaInicio);
+        console.log( fechaFin+ " " +fechaInicio);
         var dias = diff/(1000*60*60*24) ;
                          // (1000*60*60*24) --> milisegundos -> segundos -> minutos -> horas -> días
 
-        const finalText = `Lleva ${dias} haciendo X cosas`;
+        const finalText = `Lleva ${Math.round(dias)} días haciendo X cosas`;
         respuesta.textContent = finalText;
         speech.text = finalText;
     }
