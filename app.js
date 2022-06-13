@@ -117,6 +117,9 @@ function togglePopup() {
 }
 items2.forEach(item => item.addEventListener('click', togglePopup));
 
+//FECHA GYM
+var fechaInicio = new Date('2022-06-16').getTime();
+
 //Reconocimiento de voz
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
@@ -260,6 +263,32 @@ function readOutLoud(message, busqueda, pregunta, busquedaYT, busquedaSpotify) {
         respuesta.textContent = finalText;
         speech.text = "Hoy es" + dia + diaN + "de" + mL[parseInt(mesN) - 1];
     }
+
+    if (message.toLowerCase().includes('días de ruina')) {
+        
+      
+        var fechaFin    = new Date().getTime();
+        
+        var diff = fechaFin - fechaInicio;
+        
+        var dias = diff/(1000*60*60*24) ;
+                         // (1000*60*60*24) --> milisegundos -> segundos -> minutos -> horas -> días
+
+        const finalText = `Lleva ${dias} haciendo X cosas`;
+        respuesta.textContent = finalText;
+        speech.text = finalText;
+    }
+
+    if (message.toLowerCase().includes('serrano ha ido al gimnasio')) {
+        
+
+
+        const finalText = `Despiértame de esta vida gitana que llevo entonces`;
+        respuesta.textContent = finalText;
+        speech.text = finalText;
+    }
+
+
     if (message.toLowerCase().includes("tiempo")) {
         var grados = document.getElementById("temp-main").innerHTML;
         var condition = document.getElementById("condition").innerHTML;
